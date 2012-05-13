@@ -8,16 +8,9 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# include dirs in PATH
-dirs=("$HOME/.bin" `ruby -rubygems -e "puts Gem.user_dir"`)
-for dir in "${dirs[@]}"
-do
-    if [ -d $dir ] ; then
-        PATH="$PATH:$dir"
-    fi
-done
-unset dir
-unset dirs
-
-# set any environment vars
 export EDITOR=vim
+
+if [ -d "$HOME/.bin" ]; then
+    export PATH="$PATH:$HOME/.bin"
+fi
+
