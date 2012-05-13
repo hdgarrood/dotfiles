@@ -1,0 +1,5 @@
+#!/bin/sh
+
+for file in *.shpaml; do
+    shpaml.py <$file >${file%\.shpaml}
+done
