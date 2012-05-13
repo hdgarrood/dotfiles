@@ -1,5 +1,0 @@
-#!/bin/bash
-pandoc -s $@ >/tmp/pandoc-preview.html
-xdg-open /tmp/pandoc-preview.html
-sleep 2
-rm /tmp/pandoc-preview.html
