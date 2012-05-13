@@ -13,8 +13,6 @@ if has("gui_running")
   set guioptions-=T
 endif
 
-colorscheme solarized
-
 set relativenumber
 set ruler
 
