@@ -58,7 +58,11 @@ def create_symlink(file)
   dest = dotfile_path(file)
   File.delete(dest) if File.exists?(dest)
   FileUtils.mkdir_p(File.dirname(dest)) unless File.directory? File.dirname(dest)
-  File.symlink(File.expand_path(file), dest)
+  if File.extname(file) == ".erb"
+    File.open(dest, "w") { |f| f.write(ERB.new(File.read(file)).result(binding)) }
+  else
+    File.symlink(File.expand_path(file), dest)
+  end
 end
 
 def dotfile_path(file)

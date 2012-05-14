@@ -1,0 +1,19 @@
+[user]
+    name = <%= config['git']['user_name'] %>
+    email = <%= config['git']['user_email'] %>
+[alias]
+    co = checkout
+    st = status
+    ci = commit
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim 
+    autocrlf = input
+[format]
+    pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[github]
+    user = <%= config['github']['user_name'] %>
