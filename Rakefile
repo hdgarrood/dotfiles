@@ -4,7 +4,7 @@ require 'fileutils'
 desc "create symlinks in $HOME for dotfiles"
 task :install do
   replace_all = false
-  exclude_files = %w(Rakefile TODO .gitignore)
+  exclude_files = %w(Rakefile .gitignore)
   count_identical = 0
   count_total = 0
 
