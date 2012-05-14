@@ -4,20 +4,18 @@ require 'fileutils'
 desc "create symlinks in $HOME for dotfiles"
 task :install do
   replace_all = false
-  exclude_files = %w(Rakefile)
-  # don't symlink these files, copy them
-  copy_files = %w(gitconfig)
+  exclude_files = %w(Rakefile TODO .gitignore)
   count_identical = 0
   count_total = 0
 
   Dir['**/*'].each do |file|
     next if exclude_files.include?(file) || File.directory?(file)
     count_total += 1
-
+    
     if File.symlink?(dotfile_path(file)) && !File.exists?(dotfile_path(file))
       puts "fixing broken symlink: #{dotfile_path(file)}"
       File.delete(dotfile_path(file))
-      install_dotfile(file)
+      create_symlink(file)
       next
     end
 
@@ -25,15 +23,15 @@ task :install do
       if File.identical?(file, dotfile_path(file))
         count_identical += 1 
       elsif replace_all
-        install_dotfile(file)
+        create_symlink(file)
       else
         print "overwrite #{dotfile_path(file)}? [ynaq] "
         case $stdin.gets.chomp
         when 'a'
           replace_all = true
-          install_dotfile(file)
+          create_symlink(file)
         when 'y'
-          install_dotfile(file) 
+          create_symlink(file) 
         when 'q'
           exit
         else
@@ -42,7 +40,7 @@ task :install do
       end
     else
       puts "adding new file #{dotfile_path(file)}"
-      install_dotfile(file)
+      create_symlink(file)
     end
 
   end
@@ -56,15 +54,11 @@ task :install do
   end
 end
 
-def install_dotfile(file)
+def create_symlink(file)
   dest = dotfile_path(file)
   File.delete(dest) if File.exists?(dest)
   FileUtils.mkdir_p(File.dirname(dest)) unless File.directory? File.dirname(dest)
-  if copy_files.include?(file)
-    FileUtils.copy(file, dest)
-  else
-    File.symlink(File.expand_path(file), dest)
-  end
+  File.symlink(File.expand_path(file), dest)
 end
 
 def dotfile_path(file)
