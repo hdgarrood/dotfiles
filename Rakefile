@@ -13,8 +13,10 @@ task :install do
     count_total += 1
     
     if File.symlink?(dotfile_path(file)) && !File.exists?(dotfile_path(file))
-      puts "deleting broken symlink: #{dotfile_path(file)}"
+      puts "fixing broken symlink: #{dotfile_path(file)}"
       File.delete(dotfile_path(file))
+      create_symlink(file)
+      next
     end
 
     if File.exists?(dotfile_path(file))
