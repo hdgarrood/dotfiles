@@ -1,10 +1,14 @@
 require 'rake'
+require 'erb'
+require 'yaml'
 require 'fileutils'
+
+CONFIG = YAML::load(File.open("config.yml"))
 
 desc "create symlinks in $HOME for dotfiles"
 task :install do
   replace_all = false
-  exclude_files = %w(Rakefile .gitignore)
+  exclude_files = %w(Rakefile .gitignore config.yml)
   count_identical = 0
   count_total = 0
 
@@ -52,6 +56,7 @@ task :install do
   else
     puts "done"
   end
+
 end
 
 def create_symlink(file)
@@ -66,5 +71,5 @@ def create_symlink(file)
 end
 
 def dotfile_path(file)
-  return File.join(ENV['HOME'], ".#{file}")
+  return File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
 end
