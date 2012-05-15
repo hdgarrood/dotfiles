@@ -9,5 +9,13 @@
 #umask 022
 
 export EDITOR=vim
-export PATH="$HOME/.rbenv/bin:$HOME/.bin:$PATH"
 
+prepend_path_if_exists() {
+    if [ -d "$1" ]; then
+        export PATH="$HOME/$1:$PATH"
+    fi
+}
+
+prepend_path_if_exists .bin
+
+undef -f prepend_path_if_exists
