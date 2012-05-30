@@ -44,10 +44,9 @@ clip() {
     else
       input="$*"
     fi
-    if [ -z "$input" ]; then  # If no input, print usage message.
-      echo "Copies params or stdin to the clipboard."
-      echo "Usage: clip STRING"
-      echo "       clip < FILE"
+    if [ -z "$input" ]; then
+      # if no input, print clipboard to stdout
+      xclip -o
     else
       # Copy input to clipboard
       echo -n "$input" | xclip -selection c
