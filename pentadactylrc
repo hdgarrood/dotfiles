@@ -1,0 +1,41 @@
+set hintkeys='asdflkjhgqweroiupzxcvmnbty'
+
+set titlestring=Mozilla\ Firefox
+" don't need to press enter to follow hints
+set followhints=0
+
+" set wild mode to show completions as you type
+set wildmode=list:longest,full
+
+" highlight the terms
+set hlfind
+
+" find as you type
+set incfind
+
+"" only consider case if an upper case char is used
+set findcase=smart
+
+" turn off the freakin' bell
+set noerrorbells
+set novisualbell
+
+colorscheme vimium
+
+" unset maps
+nmap w <Nop>
+nmap d <Nop>
+nmap u <Nop>
+
+" movement
+nmap d <C-d>
+nmap u <C-u>
+
+nmap j 3<Down>
+nmap k 3<Up>
+
+nmap J :tabprevious<CR>
+nmap K :tabnext<CR>
+nmap x :quit<CR>
+nmap X :undo<CR>
+nmap B :back<CR>
