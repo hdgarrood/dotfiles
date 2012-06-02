@@ -10,12 +10,13 @@
 
 export EDITOR=vim
 
-prepend_path_if_exists() {
+append_path_if_exists() {
     if [ -d "$1" ]; then
-        export PATH="$HOME/$1:$PATH"
+        export PATH="$PATH:$1"
     fi
 }
 
-prepend_path_if_exists .bin
+append_path_if_exists $HOME/.bin
+append_path_if_exists $HOME/.cabal/bin
 
-undef -f prepend_path_if_exists
+undef -f append_path_if_exists
