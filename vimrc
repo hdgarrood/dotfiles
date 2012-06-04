@@ -11,6 +11,8 @@ if has("gui_running")
   endif
   set guioptions-=r
   set guioptions-=T
+  set background=dark
+  colorscheme solarized
 endif
 
 set relativenumber
