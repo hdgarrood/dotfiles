@@ -10,13 +10,28 @@
 
 export EDITOR=vim
 
-append_path_if_exists() {
-    if [ -d "$1" ]; then
-        export PATH="$PATH:$1"
+# temporary function for adding dirs to $PATH
+add_path() {
+    local PREPEND="false"
+
+    # basic arg parsing
+    if [ "$1" = "--prepend" ]; then
+        PREPEND="true"
+        shift
     fi
+
+    for ARG in $*; do
+        if [ -d $ARG ]; then
+            if [ "$PREPEND" = "true" ]; then
+                export PATH="$ARG:$PATH"
+            else
+                export PATH="$PATH:$ARG"
+            fi
+        else
+            echo "$0: not a directory: $ARG" >&2
+        fi
+    done
 }
 
-append_path_if_exists $HOME/.bin
-append_path_if_exists $HOME/.cabal/bin
-
-undef -f append_path_if_exists
+add_path --prepend $HOME/.bin 
+add_path $HOME/.cabal/bin
