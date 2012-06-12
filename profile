@@ -7,7 +7,7 @@
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
 
-export EDITOR=gvim
+export EDITOR=/usr/bin/vim
 
 # temporary function for adding dirs to $PATH
 add_path() {
