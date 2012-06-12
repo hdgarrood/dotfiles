@@ -28,12 +28,6 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-" add newlines automatically
-set textwidth=72
-
-" filetype specific settings
-au FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 
-
 " wildmenu
 set wildmenu
 set wildchar=<TAB>
