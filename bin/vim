@@ -1,2 +1,3 @@
 #!/bin/sh
-gvim $*
+# use gvim if exists, else vim
+which gvim >/dev/null && gvim $* || vim $*
