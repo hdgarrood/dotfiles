@@ -7,7 +7,7 @@ if has("gui_running")
   if has("win32")
     set guifont=inconsolata:h12
   else
-    set guifont=inconsolata\ medium\ 12
+    set guifont=Ubuntu\ Mono\ 13
   endif
   set guioptions-=r
   set guioptions-=T
