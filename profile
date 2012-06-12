@@ -8,7 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-export EDITOR=vim
+export EDITOR=gvim
 
 # temporary function for adding dirs to $PATH
 add_path() {
