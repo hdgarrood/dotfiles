@@ -12,9 +12,3 @@ alias ra='cd ~/code/rails'
 # misc
 alias ack='ack-grep'
 alias history='fc -l 1 | less'
-
-# only use this alias if gvim exists
-if which gvim >/dev/null
-then
-    alias vim='gvim'
-fi
