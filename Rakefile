@@ -9,10 +9,11 @@ require 'rake'
 require 'erb'
 require 'yaml'
 require 'fileutils'
+require 'rbconfig'
+require 'ostruct'
 
 desc "create symlinks in $HOME for dotfiles"
 task :install do
-  require 'rbconfig'
   case RbConfig::CONFIG['host_os']
   when 'mingw32'
     puts 'on windows; not implemented'
@@ -24,7 +25,6 @@ task :install do
 end
 
 def install_linux
-  config = YAML::load_file('config.yml')
   replace_all = false
   exclude_files = %w(Rakefile .gitignore config.yml)
   count_identical = 0
@@ -80,7 +80,7 @@ def create_symlink(file)
   File.delete(dest) if File.exists?(dest)
   FileUtils.mkdir_p(File.dirname(dest)) unless File.directory? File.dirname(dest)
   if File.extname(file) == ".erb"
-    File.open(dest, "w") { |f| f.write(ERB.new(File.read(file)).result(binding)) }
+    File.open(dest, "w") { |f| f.write(ERB.new(File.read(file)).result(BindingHolder.get_binding)) }
   else
     File.symlink(File.expand_path(file), dest)
   end
@@ -88,4 +88,17 @@ end
 
 def dotfile_path(file)
   return File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
+end
+
+class BindingHolder
+  class << self
+    def get_binding
+      unless @binding
+        yaml = YAML::load_file('config.yml')
+        ns = OpenStruct.new(:config => yaml)
+        @binding = ns.instance_eval { binding }
+      end
+      return @binding
+    end
+  end
 end
