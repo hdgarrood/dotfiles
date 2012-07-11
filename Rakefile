@@ -53,7 +53,6 @@ task :install do
       puts "adding new file #{dotfile_path(file)}"
       create_symlink(file)
     end
-
   end
 
   if count_identical == count_total
@@ -63,7 +62,6 @@ task :install do
   else
     puts "done"
   end
-
 end
 
 def create_symlink(file)
