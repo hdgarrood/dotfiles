@@ -10,10 +10,21 @@ require 'erb'
 require 'yaml'
 require 'fileutils'
 
-CONFIG = YAML::load_file("config.yml")
-
 desc "create symlinks in $HOME for dotfiles"
 task :install do
+  require 'rbconfig'
+  case RbConfig::CONFIG['host_os']
+  when 'mingw32'
+    puts 'on windows; not implemented'
+  when 'linux', 'linux-gnu'
+    install_linux
+  else
+    puts 'unrecognised host os :('
+  end
+end
+
+def install_linux
+  config = YAML::load_file('config.yml')
   replace_all = false
   exclude_files = %w(Rakefile .gitignore config.yml)
   count_identical = 0
