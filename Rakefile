@@ -10,7 +10,7 @@ require 'erb'
 require 'yaml'
 require 'fileutils'
 
-CONFIG = YAML::load(File.open("config.yml"))
+CONFIG = YAML::load_file("config.yml")
 
 desc "create symlinks in $HOME for dotfiles"
 task :install do
