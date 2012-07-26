@@ -1,9 +1,6 @@
 # this file is a modified version of the Rakefile in Ryan Bates'
 # dotfiles repo:
-#
 #   https://github.com/ryanb/dotfiles
-#
-# he owns the copyright, and it does have a licence, etc etc.
 
 require 'rake'
 require 'erb'
