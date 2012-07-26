@@ -11,17 +11,10 @@ require 'ostruct'
 
 desc "create symlinks in $HOME for dotfiles"
 task :install do
-  case RbConfig::CONFIG['host_os']
-  when 'mingw32'
-    puts 'on windows; not implemented'
-  when 'linux', 'linux-gnu'
-    install_linux
-  else
-    puts 'unrecognised host os :('
-  end
+  install_dotfiles
 end
 
-def install_linux
+def install_dotfiles
   replace_all = false
   exclude_files = %w(Rakefile .gitignore config.yml)
   count_identical = 0
@@ -31,26 +24,21 @@ def install_linux
     next if exclude_files.include?(file) || File.directory?(file)
     count_total += 1
     
-    if File.symlink?(dotfile_path(file)) && !File.exists?(dotfile_path(file))
-      puts "fixing broken symlink: #{dotfile_path(file)}"
-      File.delete(dotfile_path(file))
-      create_symlink(file)
-      next
-    end
+    next if fix_symlink_if_broken(file)
 
     if File.exists?(dotfile_path(file))
-      if File.identical?(file, dotfile_path(file))
+      if dotfile_identical? file
         count_identical += 1 
       elsif replace_all
-        create_symlink(file)
+        symlink_dotfile(file)
       else
         print "overwrite #{dotfile_path(file)}? [ynaq] "
         case $stdin.gets.chomp
         when 'a'
           replace_all = true
-          create_symlink(file)
+          symlink_dotfile(file)
         when 'y'
-          create_symlink(file) 
+          symlink_dotfile(file) 
         when 'q'
           exit
         else
@@ -59,7 +47,7 @@ def install_linux
       end
     else
       puts "adding new file #{dotfile_path(file)}"
-      create_symlink(file)
+      symlink_dotfile(file)
     end
   end
 
@@ -72,19 +60,45 @@ def install_linux
   end
 end
 
-def create_symlink(file)
+def symlink_dotfile(file)
   dest = dotfile_path(file)
   File.delete(dest) if File.exists?(dest)
   FileUtils.mkdir_p(File.dirname(dest)) unless File.directory? File.dirname(dest)
   if File.extname(file) == ".erb"
     File.open(dest, "w") { |f| f.write(ERB.new(File.read(file)).result(BindingHolder.get_binding)) }
   else
-    File.symlink(File.expand_path(file), dest)
+    make_symlink(File.expand_path(file), dest)
+  end
+end
+
+def make_symlink(src, dest)
+  if RbConfig::CONFIG['host_os'] == 'mingw32'
+    FileUtils.copy(src, dest)
+  else
+    File.symlink(src, dest)
+  end
+end
+
+def fix_symlink_if_broken(file)
+  if File.symlink?(dotfile_path(file)) && !File.exists?(dotfile_path(file))
+    puts "fixing broken symlink: #{dotfile_path(file)}"
+    File.delete(dotfile_path(file))
+    symlink_dotfile(file)
+    return true
   end
 end
 
 def dotfile_path(file)
   return File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
+end
+
+def dotfile_identical?(file)
+  dotfile = dotfile_path(file)
+  if RbConfig::CONFIG['host_os'] == 'mingw32'
+    File.read(file) == File.read(dotfile)
+  else
+    File.identical?(file, dotfile)
+  end
 end
 
 class BindingHolder
