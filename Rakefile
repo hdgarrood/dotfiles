@@ -91,11 +91,11 @@ class BindingHolder
   class << self
     def get_binding
       unless @binding
-        yaml = YAML::load_file('config.yml')
-        ns = OpenStruct.new(:config => yaml)
+        config = YAML::load_file('config.yml')
+        ns = OpenStruct.new(:config => config)
         @binding = ns.instance_eval { binding }
       end
-      return @binding
+      @binding
     end
   end
 end
