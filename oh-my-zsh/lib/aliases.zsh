@@ -12,3 +12,7 @@ alias ra='cd ~/code/rails'
 # misc
 alias ack='ack-grep'
 alias history='fc -l 1 | less'
+
+# ruby
+alias bake='bundle exec rake'
+alias bexc='bundle exec'
