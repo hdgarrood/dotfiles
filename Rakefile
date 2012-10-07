@@ -14,6 +14,8 @@ task :install do
   install_dotfiles
 end
 
+task :default => :install
+
 def install_dotfiles
   replace_all = false
   exclude_files = %w(Rakefile .gitignore config.yml)
