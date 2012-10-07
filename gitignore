@@ -5,3 +5,6 @@
 
 # libreoffice lock files
 .~lock*#
+
+# subgit
+.subgit
