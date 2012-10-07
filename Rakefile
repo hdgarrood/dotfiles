@@ -65,7 +65,7 @@ def symlink_dotfile(file)
   File.delete(dest) if File.exists?(dest)
   FileUtils.mkdir_p(File.dirname(dest)) unless File.directory? File.dirname(dest)
   if File.extname(file) == ".erb"
-    File.open(dest, "w") { |f| f.write(ERB.new(File.read(file)).result(BindingHolder.get_binding)) }
+    File.open(dest, "w") { |f| f.write(erbify(file)) }
   else
     make_symlink(File.expand_path(file), dest)
   end
@@ -94,22 +94,27 @@ end
 
 def dotfile_identical?(file)
   dotfile = dotfile_path(file)
-  if RbConfig::CONFIG['host_os'] == 'mingw32'
-    File.read(file) == File.read(dotfile)
-  else
-    File.identical?(file, dotfile)
-  end
+  return true if File.identical?(file, dotfile)
+
+  new_file_contents = File.extname(file) == '.erb' ?
+    erbify(file) : File.read(file)
+  return new_file_contents == File.read(dotfile)
+end
+
+# takes a file, returns erbed string
+def erbify(file)
+  ERB.new(File.read(file)).result(BindingHolder.get_binding)
 end
 
 class BindingHolder
-  class << self
-    def get_binding
-      unless @binding
-        config = YAML::load_file('config.yml')
-        ns = OpenStruct.new(:config => config)
-        @binding = ns.instance_eval { binding }
-      end
-      @binding
-    end
+  def self.get_binding
+    @binding ||= load_binding
+  end
+
+  private
+  def self.load_binding
+    config = YAML::load_file('config.yml')
+    ns = OpenStruct.new(:config => config)
+    return ns.instance_eval { binding }
   end
 end
