@@ -12,3 +12,7 @@
 # python bytecode
 __pycache__
 *.pyc
+
+# haskell compiled things
+*.hi
+*.o
