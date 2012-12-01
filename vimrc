@@ -15,12 +15,19 @@ if has("gui_running")
   colorscheme solarized
 endif
 
+" --- general settings ---
 set relativenumber
-
 set backspace=indent,eol,start
 
-" spaces instead of tab chars
+" use spaces instead of tab chars
 set expandtab
+
+set hlsearch
+set incsearch
+set smartcase
+
+set scrolloff=5
+set sidescrolloff=5
 
 " tab width
 set tabstop=4
@@ -47,25 +54,14 @@ function! CurDir()
     let curdir = substitute(getcwd(), $HOME, "~", "")
     return curdir
 endfunction
-" end status line stuff
 
-" searching
-set hlsearch
-set incsearch
-set smartcase
-" clear search pattern with :ClearSearchPattern
-command! ClearSearchPattern let @/ = ""
-
-" scrolling
-set scrolloff=5
-set sidescrolloff=5
-
+" --- custom key mappings ---
 " tab navigation like firefox
 nmap <C-S-tab> :tabprevious<CR>
 nmap <C-tab> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 
-" mappings for yanking/pasting to or from other applications
+" yanking/pasting to or from other applications
 nnoremap <C-y> "+y
 vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
@@ -76,3 +72,5 @@ function! Inc(...)
   let g:i += a:0 > 0 ? a:1 : 1
   return result
 endfunction
+
+command! ClearSearchPattern let @/ = ""
