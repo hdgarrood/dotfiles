@@ -34,10 +34,16 @@ set wildmode=longest,list
 " --- status line stuff ---
 "  always show statusline
 set laststatus=2
-set statusline=\ <%-15.25(%f%)%m%r%h\ %w\ \
-set statusline+=\ \ \ [%{&ff}/%Y]
-set statusline+=\ \ \ %<%20.30(%{CurDir()}%)
-set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
+
+" readonly flag
+set statusline=\ \ %r
+
+" line-ending type (dos/unix) and filetype
+set statusline+=[%{&ff}/%Y]
+" current directory
+set statusline+=\ \ %<%-0.40(%{CurDir()}%)
+" current cursor position; line and column number
+set statusline+=%=%-10.(line\ %l,\ col\ %c%V%)\  
 
 function! CurDir()
     let curdir = substitute(getcwd(), $HOME, "~", "")
@@ -50,7 +56,7 @@ set hlsearch
 set incsearch
 set smartcase
 " clear search pattern with :C
-command C let @/ = ""
+command! C let @/ = ""
 
 " scrolling
 set scrolloff=5
