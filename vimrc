@@ -31,7 +31,8 @@ set softtabstop=4
 set wildmenu
 set wildmode=longest,list
 
-" status line stuff
+" --- status line stuff ---
+"  always show statusline
 set laststatus=2
 set statusline=\ <%-15.25(%f%)%m%r%h\ %w\ \
 set statusline+=\ \ \ [%{&ff}/%Y]
@@ -41,14 +42,6 @@ set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
 function! CurDir()
     let curdir = substitute(getcwd(), $HOME, "~", "")
     return curdir
-endfunction
-
-function! HasPaste()
-    if &paste
-        return '[PASTE]'
-    else
-        return ''
-    endif
 endfunction
 " end status line stuff
 
