@@ -38,8 +38,12 @@ set wildmode=longest,list
 
 " --- autocommands ---
 if has("autocmd")
-    au BufRead,BufNewFile *.\(md\|markdown\) set filetype=markdown
-end
+    au BufRead,BufNewFile *.\(md\|markdown\) setf markdown
+
+    au FileType make set noexpandtab
+    au FileType gitcommit,markdown set tw=72
+    au FileType ruby set sts=2 sw=2
+endif
 
 " --- status line stuff ---
 "  always show statusline
