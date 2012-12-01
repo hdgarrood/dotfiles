@@ -72,7 +72,7 @@ vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
 
-function Inc(...)
+function! Inc(...)
   let result = g:i
   let g:i += a:0 > 0 ? a:1 : 1
   return result
