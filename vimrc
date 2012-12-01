@@ -19,9 +19,6 @@ endif
 set relativenumber
 set backspace=indent,eol,start
 
-" use spaces instead of tab chars
-set expandtab
-
 set hlsearch
 set incsearch
 set smartcase
@@ -29,12 +26,12 @@ set smartcase
 set scrolloff=5
 set sidescrolloff=5
 
-" tab width
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-" wildmenu--bash-like tab completion
+" bash-like tab completion
 set wildmenu
 set wildmode=longest,list
 
