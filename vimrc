@@ -49,6 +49,8 @@ endfunction
 set hlsearch
 set incsearch
 set smartcase
+" clear search pattern with :C
+command C let @/ = ""
 
 " scrolling
 set scrolloff=5
