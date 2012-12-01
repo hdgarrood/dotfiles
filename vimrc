@@ -36,8 +36,8 @@ set softtabstop=4
 set wildmenu
 set wildmode=longest,list
 
-set directory=~/.vim/swaps
-set backupdir=~/.vim/backups
+set directory=~/.vim/_swaps
+set backupdir=~/.vim/_backups
 
 " --- autocommands ---
 if has("autocmd")
