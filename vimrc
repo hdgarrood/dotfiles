@@ -36,6 +36,9 @@ set softtabstop=4
 set wildmenu
 set wildmode=longest,list
 
+set directory=~/.vim/swaps
+set backupdir=~/.vim/backups
+
 " --- autocommands ---
 if has("autocmd")
     au BufRead,BufNewFile *.\(md\|markdown\) setf markdown
