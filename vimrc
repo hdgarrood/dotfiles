@@ -10,7 +10,9 @@ if has("gui_running")
     set guifont=Ubuntu\ Mono\ 13
   endif
   " remove all that gui clutter
-  set guioptions-=rTm
+  set guioptions-=r
+  set guioptions-=T
+  set guioptions-=r
   set background=light
   colorscheme solarized
 endif
