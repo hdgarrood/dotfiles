@@ -18,7 +18,6 @@ if has("gui_running")
 endif
 
 " --- general settings ---
-set relativenumber
 set backspace=indent,eol,start
 
 set hlsearch
