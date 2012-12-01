@@ -54,8 +54,9 @@ endfunction
 " end status line stuff
 
 " searching
+set hlsearch
 set incsearch
-set ignorecase
+set smartcase
 
 " scrolling
 set scrolloff=5
