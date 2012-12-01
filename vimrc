@@ -36,6 +36,11 @@ set softtabstop=4
 set wildmenu
 set wildmode=longest,list
 
+" --- autocommands ---
+if has("autocmd")
+    au BufRead,BufNewFile *.\(md\|markdown\) set filetype=markdown
+end
+
 " --- status line stuff ---
 "  always show statusline
 set laststatus=2
