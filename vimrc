@@ -16,7 +16,6 @@ if has("gui_running")
 endif
 
 set relativenumber
-set ruler
 
 set backspace=indent,eol,start
 
