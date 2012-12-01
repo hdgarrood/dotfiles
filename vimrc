@@ -34,10 +34,8 @@ set wildmode=longest,list
 " --- status line stuff ---
 "  always show statusline
 set laststatus=2
-
 " readonly flag
 set statusline=\ \ %r
-
 " line-ending type (dos/unix) and filetype
 set statusline+=[%{&ff}/%Y]
 " current directory
