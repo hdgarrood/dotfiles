@@ -67,10 +67,15 @@ vnoremap <C-y> "+y
 nnoremap <C-p> "+gP
 vnoremap <C-p> "+gP
 
+" --- custom functions ---
+" increments a global counter, returning its initial value
+" increments by value of argument or 1
+" useful for search/replace to add list numbers
 function! Inc(...)
   let result = g:i
   let g:i += a:0 > 0 ? a:1 : 1
   return result
 endfunction
 
+" --- custom commands ---
 command! ClearSearchPattern let @/ = ""
