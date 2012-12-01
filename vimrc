@@ -27,9 +27,9 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-" wildmenu
+" wildmenu--bash-like tab completion
 set wildmenu
-set wildchar=<TAB>
+set wildmode=longest,list
 
 " status line stuff
 set laststatus=2
