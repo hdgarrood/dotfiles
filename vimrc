@@ -49,21 +49,25 @@ if has("autocmd")
 endif
 
 " --- status line stuff ---
-"  always show statusline
-set laststatus=2
-" readonly flag
-set statusline=\ \ %r
-" line-ending type (dos/unix) and filetype
-set statusline+=[%{&ff}/%Y]
-" current directory
-set statusline+=\ \ %<%-0.40(%{CurDir()}%)
-" current cursor position; line and column number
-set statusline+=%=%-10.(line\ %l,\ col\ %c%V%)\  
+if has("statusline")
+    " always show the status bar
+    set laststatus=2
 
-function! CurDir()
-    let curdir = substitute(getcwd(), $HOME, "~", "")
-    return curdir
-endfunction
+    " Start the status line (filename, modified, readonly)
+    set statusline=%f\ %m\ %r
+
+    " Add filetype + eoltype
+    set statusline+=\ [%{&ff}/%Y]
+
+    " Add fugitive
+    set statusline+=\ %{fugitive#statusline()}
+
+    " Finish the statusline
+    set statusline+=%=Line:%l/%L[%p%%]
+    set statusline+=\ Col:%v
+    set statusline+=\ Buf:%n
+    set statusline+=\ [%b][0x%B]
+endif
 
 " --- custom key mappings ---
 " tab navigation like firefox
