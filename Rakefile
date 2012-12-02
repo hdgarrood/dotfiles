@@ -121,7 +121,7 @@ def create_config
 
   puts "no config.rb found -- creating..."
   keys.each do |key|
-    puts "what's your #{key}?"
+    puts "what's your #{key.gsub('_', ' ')}?"
     val = $stdin.gets.chomp
     config[key] = val
   end
