@@ -29,6 +29,8 @@ set smartcase
 set scrolloff=5
 set sidescrolloff=5
 
+set colorcolumn=80
+
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -40,6 +42,9 @@ set wildmode=longest,list
 
 set directory=~/.vim/_swaps
 set backupdir=~/.vim/_backups
+
+set splitright
+set splitbelow
 
 " --- autocommands ---
 if has("autocmd")
