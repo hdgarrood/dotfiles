@@ -21,11 +21,12 @@ def install_dotfiles
 end
 
 def initialize_uninitialized_submodules
-  `git submodule status`.split("\n").each do |l|
+  `git submodule status`.split("\n").each do |line|
     # if the first char is '-', the submodule needs to be initialized
-    if l[0] == '-'
+    if line[0] == '-'
       puts "initializing submodules..."
       system "git submodule init"
+      return
     end
   end
 end
