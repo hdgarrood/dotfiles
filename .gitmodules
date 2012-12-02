@@ -4,6 +4,6 @@
 [submodule "vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "vim/bundle/vim-conque"]
+[submodule "vim-conque"]
 	path = vim/bundle/vim-conque
 	url = https://github.com/rygwdn/vim-conque
