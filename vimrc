@@ -47,7 +47,7 @@ if has("autocmd")
 
     au FileType make set noexpandtab
     au FileType gitcommit,markdown set tw=72
-    au FileType ruby set sts=2 sw=2
+    au FileType ruby,vim set sts=2 sw=2
 endif
 
 " --- status line stuff ---
