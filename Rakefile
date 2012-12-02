@@ -126,7 +126,7 @@ def create_config
     config[key] = val
   end
 
-  File.open('config.rb', 'w') { |f| f.puts "DotfilesConfig=#{config.to_s}" }
+  File.open('config.rb', 'w') { |f| f.puts "DotfilesConfig=#{pp_hash(config)}" }
 end
 
 def get_config_keys
@@ -135,4 +135,11 @@ def get_config_keys
     keys += File.read(f).scan(/\<%= DotfilesConfig\['(.*?)'\] %\>/).map(&:first)
   end
   keys
+end
+
+# pretty-prints a hash, assuming no nesting
+def pp_hash(hash)
+  str = "{\n  "
+  str << hash.map { |k, v| "'#{k}' => '#{v}'" }.join(",\n  ")
+  str << "\n}\n"
 end
