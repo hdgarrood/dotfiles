@@ -1,7 +1,7 @@
 set nocompatible
-call pathogen#infect() 
-syntax on 
-filetype plugin indent on 
+call pathogen#infect()
+syntax on
+filetype plugin indent on
 
 if has("gui_running")
   if has("win32")
@@ -93,3 +93,4 @@ endfunction
 
 " --- custom commands ---
 command! ClearSearchPattern let @/ = ""
+command! KillWhitespace :normal :%s/\s\+$//g<cr> :ClearSearchPattern
