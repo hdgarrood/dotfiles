@@ -15,11 +15,22 @@ end
 task :default => :install
 
 def install_dotfiles
-  replace_all = false
-  exclude_files = %w(Rakefile .gitignore config.rb)
-  count_identical = 0
-  count_total = 0
+  initialize_uninitialized_submodules
+  load_configuration
+  copy_dotfiles
+end
 
+def initialize_uninitialized_submodules
+  `git submodule status`.split("\n").each do |l|
+    # if the first char is '-', the submodule needs to be initialized
+    if l[0] == '-'
+      puts "initializing submodules..."
+      system "git submodule init"
+    end
+  end
+end
+
+def load_configuration
   create_config unless File.exists?('config.rb')
   require './config'
   if !defined?(DotfilesConfig)
@@ -27,6 +38,13 @@ def install_dotfiles
     $stderr.puts "try deleting it, and redo `rake install` to create it automatically"
     exit 1
   end
+end
+
+def copy_dotfiles
+  replace_all = false
+  exclude_files = %w(Rakefile .gitignore config.rb)
+  count_identical = 0
+  count_total = 0
 
   Dir['**/*'].each do |file|
     next if exclude_files.include?(file) || File.directory?(file)
