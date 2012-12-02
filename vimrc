@@ -43,32 +43,32 @@ set backupdir=~/.vim/_backups
 
 " --- autocommands ---
 if has("autocmd")
-    au BufRead,BufNewFile *.\(md\|markdown\) setf markdown
+  au BufRead,BufNewFile *.\(md\|markdown\) setf markdown
 
-    au FileType make set noexpandtab
-    au FileType gitcommit,markdown set tw=72
-    au FileType ruby,vim set sts=2 sw=2
+  au FileType make set noexpandtab
+  au FileType gitcommit,markdown set tw=72
+  au FileType ruby,vim set sts=2 sw=2
 endif
 
 " --- status line stuff ---
 if has("statusline")
-    " always show the status bar
-    set laststatus=2
+  " always show the status bar
+  set laststatus=2
 
-    " Start the status line (filename, modified, readonly)
-    set statusline=%f\ %m\ %r
+  " Start the status line (filename, modified, readonly)
+  set statusline=%f\ %m\ %r
 
-    " Add filetype + eoltype
-    set statusline+=\ [%{&ff}/%Y]
+  " Add filetype + eoltype
+  set statusline+=\ [%{&ff}/%Y]
 
-    " Add fugitive
-    set statusline+=\ %{fugitive#statusline()}
+  " Add fugitive
+  set statusline+=\ %{fugitive#statusline()}
 
-    " Finish the statusline
-    set statusline+=%=Line:%l/%L[%p%%]
-    set statusline+=\ Col:%v
-    set statusline+=\ Buf:%n
-    set statusline+=\ [%b][0x%B]
+  " Finish the statusline
+  set statusline+=%=Line:%l/%L[%p%%]
+  set statusline+=\ Col:%v
+  set statusline+=\ Buf:%n
+  set statusline+=\ [%b][0x%B]
 endif
 
 " --- custom key mappings ---
