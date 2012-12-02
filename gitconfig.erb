@@ -1,6 +1,6 @@
 [user]
-    name = <%= config['git']['user_name'] %>
-    email = <%= config['git']['user_email'] %>
+    name = <%= DotfilesConfig['git_username'] %>
+    email = <%= DotfilesConfig['git_email'] %>
 [alias]
     co = checkout
     st = status
@@ -16,6 +16,6 @@
 [format]
     pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [github]
-    user = <%= config['github']['user_name'] %>
+    user = <%= DotfilesConfig['github_user_name'] %>
 [web]
     browser = chromium-browser

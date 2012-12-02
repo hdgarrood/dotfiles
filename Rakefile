@@ -4,10 +4,8 @@
 
 require 'rake'
 require 'erb'
-require 'yaml'
 require 'fileutils'
 require 'rbconfig'
-require 'ostruct'
 
 desc "create symlinks in $HOME for dotfiles"
 task :install do
@@ -18,19 +16,27 @@ task :default => :install
 
 def install_dotfiles
   replace_all = false
-  exclude_files = %w(Rakefile .gitignore config.yml)
+  exclude_files = %w(Rakefile .gitignore config.rb)
   count_identical = 0
   count_total = 0
+
+  create_config unless File.exists?('config.rb')
+  require './config'
+  if !defined?(DotfilesConfig)
+    $stderr.puts "config.rb should define DotfilesConfig"
+    $stderr.puts "try deleting it, and redo `rake install` to create it automatically"
+    exit 1
+  end
 
   Dir['**/*'].each do |file|
     next if exclude_files.include?(file) || File.directory?(file)
     count_total += 1
-    
+
     next if fix_symlink_if_broken(file)
 
     if File.exists?(dotfile_path(file))
       if dotfile_identical? file
-        count_identical += 1 
+        count_identical += 1
       elsif replace_all
         symlink_dotfile(file)
       else
@@ -40,7 +46,7 @@ def install_dotfiles
           replace_all = true
           symlink_dotfile(file)
         when 'y'
-          symlink_dotfile(file) 
+          symlink_dotfile(file)
         when 'q'
           exit
         else
@@ -105,18 +111,28 @@ end
 
 # takes a file, returns erbed string
 def erbify(file)
-  ERB.new(File.read(file)).result(BindingHolder.get_binding)
+  ERB.new(File.read(file)).result(binding)
 end
 
-class BindingHolder
-  def self.get_binding
-    @binding ||= load_binding
+# walks you through creating your config.rb
+def create_config
+  keys = get_config_keys
+  config = {}
+
+  puts "no config.rb found -- creating..."
+  keys.each do |key|
+    puts "what's your #{key}?"
+    val = $stdin.gets.chomp
+    config[key] = val
   end
 
-  private
-  def self.load_binding
-    config = YAML::load_file('config.yml')
-    ns = OpenStruct.new(:config => config)
-    return ns.instance_eval { binding }
+  File.open('config.rb', 'w') { |f| f.puts "DotfilesConfig=#{config.to_s}" }
+end
+
+def get_config_keys
+  keys = []
+  Dir.glob('**/*.erb').each do |f|
+    keys += File.read(f).scan(/\<%= DotfilesConfig\['(.*?)'\] %\>/).map(&:first)
   end
+  keys
 end
