@@ -12,7 +12,7 @@ if has("gui_running")
   " remove all that gui clutter
   set guioptions-=r
   set guioptions-=T
-  set guioptions-=r
+  set guioptions-=m
   set background=light
   colorscheme solarized
 endif
