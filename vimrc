@@ -78,9 +78,9 @@ endif
 
 " --- custom key mappings ---
 " tab navigation like firefox
-nmap <C-S-tab> :tabprevious<CR>
-nmap <C-tab> :tabnext<CR>
-nmap <C-t> :tabnew<CR>
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab> :tabnext<CR>
+nnoremap <C-t> :tabnew<CR>
 
 " yanking/pasting to or from other applications
 nnoremap <leader>y "+y
@@ -89,7 +89,7 @@ nnoremap <leader>p "+gP
 vnoremap <leader>p "+gP
 
 " open help in a vertical window
-nmap <leader>h :vertical help
+nnoremap <leader>h :vertical help 
 
 " --- custom functions ---
 " increments a global counter, returning its initial value
