@@ -19,6 +19,7 @@ endif
 
 " --- general settings ---
 set backspace=indent,eol,start
+set showcmd
 
 set hlsearch
 set incsearch
