@@ -83,10 +83,13 @@ nmap <C-tab> :tabnext<CR>
 nmap <C-t> :tabnew<CR>
 
 " yanking/pasting to or from other applications
-nnoremap <C-y> "+y
-vnoremap <C-y> "+y
-nnoremap <C-p> "+gP
-vnoremap <C-p> "+gP
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>p "+gP
+vnoremap <leader>p "+gP
+
+" open help in a vertical window
+nmap <leader>h :vertical help
 
 " --- custom functions ---
 " increments a global counter, returning its initial value
