@@ -36,6 +36,8 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
+set autoindent
+
 " bash-like tab completion
 set wildmenu
 set wildmode=longest,list
@@ -51,11 +53,15 @@ set linebreak
 
 " --- autocommands ---
 if has("autocmd")
-  au BufRead,BufNewFile *.\(md\|markdown\) setf markdown
+  augroup all
+    autocmd!
+    au BufRead,BufNewFile *.\(md\|markdown\) setf markdown
+    au BufRead,BufNewFile *.\(pkg\|vw\|ddo\|sbs\|zm\|src\) setf vdf
 
-  au FileType make set noexpandtab
-  au FileType gitcommit,markdown set tw=72
-  au FileType ruby,vim set sts=2 sw=2
+    au FileType make set noexpandtab
+    au FileType gitcommit,markdown set tw=72
+    au FileType ruby,vim set sts=2 sw=2
+  augroup END
 endif
 
 " --- status line stuff ---
