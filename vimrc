@@ -93,6 +93,10 @@ vnoremap <leader>p "+gP
 
 " open help in a vertical window
 nnoremap <leader>h :vertical help 
+vnoremap <leader>h :vertical help 
+
+nnoremap <leader><space> :ClearSearchPattern<cr>
+vnoremap <leader><space> :ClearSearchPattern<cr>
 
 " sensible navigation for wrapped lines
 nnoremap j gj
