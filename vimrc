@@ -94,6 +94,10 @@ vnoremap <leader>p "+gP
 " open help in a vertical window
 nnoremap <leader>h :vertical help 
 
+" sensible navigation for wrapped lines
+nnoremap j gj
+nnoremap k gk
+
 " --- custom functions ---
 " increments a global counter, returning its initial value
 " increments by value of argument or 1
