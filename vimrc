@@ -46,6 +46,9 @@ set backupdir=~/.vim/_backups
 set splitright
 set splitbelow
 
+" break lines sensibly
+set linebreak
+
 " --- autocommands ---
 if has("autocmd")
   au BufRead,BufNewFile *.\(md\|markdown\) setf markdown
