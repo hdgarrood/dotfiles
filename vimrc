@@ -95,6 +95,7 @@ vnoremap <leader>p "+gP
 nnoremap <leader>h :vertical help 
 vnoremap <leader>h :vertical help 
 
+" shortcut for clearing the search pattern
 nnoremap <leader><space> :ClearSearchPattern<cr>
 vnoremap <leader><space> :ClearSearchPattern<cr>
 
