@@ -55,8 +55,8 @@ set linebreak
 if has("autocmd")
   augroup all
     autocmd!
-    au BufRead,BufNewFile *.\(md\|markdown\) setf markdown
-    au BufRead,BufNewFile *.\(pkg\|vw\|ddo\|sbs\|zm\|src\) setf vdf
+    au BufRead,BufNewFile *.\(md\|markdown\) set filetype=markdown
+    au BufRead,BufNewFile *.\(pkg\|vw\|ddo\|sbs\|zm\|src\) set filetype=vdf
 
     au FileType make set noexpandtab
     au FileType gitcommit,markdown set tw=72
