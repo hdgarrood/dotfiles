@@ -25,7 +25,7 @@ def initialize_uninitialized_submodules
     # if the first char is '-', the submodule needs to be initialized
     if line[0] == '-'
       puts "initializing submodules..."
-      system "git submodule init"
+      system "git submodule update --init"
       return
     end
   end
