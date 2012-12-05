@@ -50,6 +50,7 @@ set splitbelow
 
 " break lines sensibly
 set linebreak
+let &showbreak = '~> '
 
 " --- autocommands ---
 if has("autocmd")
