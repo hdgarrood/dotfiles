@@ -61,7 +61,7 @@ if has("autocmd")
 
     au FileType make set noexpandtab
     au FileType gitcommit,markdown set tw=72
-    au FileType ruby,vim set sts=2 sw=2
+    au FileType ruby,vim,haml set sts=2 sw=2
   augroup END
 endif
 
@@ -71,16 +71,19 @@ if has("statusline")
   set laststatus=2
 
   " Start the status line (filename, modified, readonly)
-  set statusline=%f\ %m\ %r
+  set statusline=%f\ %m%r
 
   " Add filetype + eoltype
-  set statusline+=\ [%{&ff}/%Y]
+  set statusline+=[%{&ff}/%Y]
 
   " Add fugitive
-  set statusline+=\ %{fugitive#statusline()}
+  set statusline+=%{fugitive#statusline()}
+
+  " add present working dir
+  set statusline+=\ %5{getcwd()}
 
   " Finish the statusline
-  set statusline+=%=Line:%l/%L[%p%%]
+  set statusline+=\ %=Line:%l/%L[%p%%]
   set statusline+=\ Col:%v
   set statusline+=\ Buf:%n
   set statusline+=\ [%b][0x%B]
