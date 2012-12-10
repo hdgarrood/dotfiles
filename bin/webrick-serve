@@ -1,22 +1,31 @@
 #! /usr/bin/env ruby
 require 'webrick'
-class NonCachingFileHandler < WEBrick::HTTPServlet::FileHandler
-  def prevent_caching(res)
-    res['ETag']          = nil
-    res['Last-Modified'] = Time.now + 100**4
-    res['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0'
-    res['Pragma']        = 'no-cache'
-    res['Expires']       = Time.now - 100**4
-  end
-  
-  def do_GET(req, res)
-    super
-    prevent_caching(res)
-  end
 
+# read args
+args = ARGV.dup
+while (arg = args.shift)
+  case arg
+  when '--port', '-p'
+    port_str = args.shift
+    port_str.to_i > 0 ?
+      port = port_str.to_i :
+      fail("port must be an integer >= 1; got #{port_str}")
+  when '--no-indexing', '-i'
+    fancy_indexing = false
+  else
+    fail "unrecognised option: #{arg}"
+  end
 end
 
-server = WEBrick::HTTPServer.new :Port => 1234
-server.mount "/", NonCachingFileHandler , './'
+# set defaults
+port ||= 1234
+fancy_indexing ||= true
+
+# start the server
+server = WEBrick::HTTPServer.new :Port => port
+server.mount "/",
+  WEBrick::HTTPServlet::FileHandler,
+  './',
+  :FancyIndexing => fancy_indexing
 trap('INT') { server.stop }
 server.start
