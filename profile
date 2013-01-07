@@ -9,7 +9,8 @@
 
 export EDITOR=vim
 
-# temporary function for adding dirs to $PATH
+# function for adding dirs to $PATH
+# note that this fails silently if arg doesn't exist
 add_path() {
     local PREPEND="false"
 
@@ -26,8 +27,6 @@ add_path() {
             else
                 export PATH="$PATH:$ARG"
             fi
-        else
-            echo "$0: not a directory: $ARG" >&2
         fi
     done
 }
