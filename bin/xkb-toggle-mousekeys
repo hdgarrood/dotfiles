@@ -1,0 +1,10 @@
+#!/bin/sh
+# uses xkbset to toggle mousekeys
+
+mouse_keys_state=$(xkbset q | grep -c "Mouse-Keys = On")
+
+if [ "$mouse_keys_state" -eq "1" ]; then
+    xkbset -m
+else
+    xkbset m
+fi
