@@ -61,5 +61,5 @@ clip() {
 # run the given task with 'bake' and then report its exit status
 bake-notify() {
     bake $1
-    notify-send "$1 finished with status $?"
+    notify-send "Bake task finished" "task '$1' finished with status $?"
 }
