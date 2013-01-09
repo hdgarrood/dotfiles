@@ -12,6 +12,3 @@ alias history='fc -l 1 | less'
 # ruby
 alias bake='bundle exec rake'
 alias bexc='bundle exec'
-
-# hub
-alias git=hub
