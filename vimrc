@@ -13,7 +13,9 @@ if has("gui_running")
   set guioptions-=r
   set guioptions-=T
   set guioptions-=m
-  set background=light
+
+  " colours
+  set background=dark
   colorscheme solarized
 endif
 
@@ -60,8 +62,9 @@ if has("autocmd")
     au BufRead,BufNewFile *.\(md\|markdown\) set filetype=markdown
     au BufRead,BufNewFile *.\(pkg\|vw\|ddo\|sbs\|zm\|src\) set filetype=vdf
 
-    au FileType make set noexpandtab
-    au FileType gitcommit,markdown set tw=72
+    au FileType make          set noexpandtab
+    au FileType gitcommit     set tw=72 colorcolumn=73
+    au FileType markdown      set tw=79
     au FileType ruby,vim,haml set sts=2 sw=2
   augroup END
 endif
