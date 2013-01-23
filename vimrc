@@ -3,6 +3,7 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 
+" --- appearance ---
 if has("gui_running")
   if has("win32")
     set guifont=consolas:h12
@@ -14,8 +15,12 @@ if has("gui_running")
   set guioptions-=T
   set guioptions-=m
   set background=light
-  colorscheme solarized
+else
+  set t_Co=256
+  set background=dark
 endif
+
+colorscheme solarized
 
 " --- general settings ---
 set backspace=indent,eol,start
