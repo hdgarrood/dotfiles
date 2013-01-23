@@ -46,7 +46,7 @@ clip() {
     fi
     if [ -z "$input" ]; then
       # if no input, print clipboard to stdout
-      xclip -o
+      xclip -o -selection c
     else
       # Copy input to clipboard
       echo -n "$input" | xclip -selection c
