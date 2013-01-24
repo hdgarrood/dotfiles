@@ -30,9 +30,3 @@ for plugin ($plugins); do
     source $ZSH/plugins/$plugin/$plugin.plugin.zsh
   fi
 done
-
-# Load the theme
-if [ ! "$ZSH_THEME" = ""  ]; then
-  source "$ZSH/themes/$ZSH_THEME.zsh-theme"
-fi
-
