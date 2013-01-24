@@ -1,18 +1,11 @@
+#!/usr/bin/env ruby
 # this file is a modified version of the Rakefile in Ryan Bates'
 # dotfiles repo:
 #   https://github.com/ryanb/dotfiles
 
-require 'rake'
 require 'erb'
 require 'fileutils'
 require 'rbconfig'
-
-desc "create symlinks in $HOME for dotfiles"
-task :install do
-  install_dotfiles
-end
-
-task :default => :install
 
 def install_dotfiles
   initialize_uninitialized_submodules
@@ -36,14 +29,14 @@ def load_configuration
   require './config'
   if !defined?(DotfilesConfig)
     $stderr.puts "config.rb should define DotfilesConfig"
-    $stderr.puts "try deleting it, and redo `rake install` to create it automatically"
+    $stderr.puts "try deleting it, and redo `./install.rb` to create it automatically"
     exit 1
   end
 end
 
 def copy_dotfiles
   replace_all = false
-  exclude_files = %w(Rakefile .gitignore config.rb)
+  exclude_files = %w(install.rb .gitignore config.rb)
   count_identical = 0
   count_total = 0
 
@@ -161,4 +154,8 @@ def pp_hash(hash)
   str = "{\n  "
   str << hash.map { |k, v| "'#{k}' => '#{v}'" }.join(",\n  ")
   str << "\n}\n"
+end
+
+if __FILE__ == $0
+  install_dotfiles
 end
