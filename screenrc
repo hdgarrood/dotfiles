@@ -1,7 +1,6 @@
 startup_message off
 escape \030x
 
-shelltitle '% |zsh'
 term screen-256color
 
 hardstatus alwayslastline

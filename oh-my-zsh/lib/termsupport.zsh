@@ -12,19 +12,17 @@ function title {
   fi
 }
 
-ZSH_THEME_TERM_TAB_TITLE_IDLE="%15<..<%~%<<" #15 char left truncated PWD
 ZSH_THEME_TERM_TITLE_IDLE="%n@%m: %~"
 
 #Appears when you have the prompt
 function omz_termsupport_precmd {
-  title $ZSH_THEME_TERM_TAB_TITLE_IDLE $ZSH_THEME_TERM_TITLE_IDLE
+  title "zsh" $ZSH_THEME_TERM_TITLE_IDLE
 }
 
 #Appears at the beginning of (and during) of command execution
 function omz_termsupport_preexec {
-  emulate -L zsh
-
-  local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]} #cmd name only, or if this is sudo or ssh, the next cmd
+  # cmd name only, or if an env var or sudo,ssh,bundle,exec, the next one
+  local CMD=${1[(wr)^(*=*|sudo|ssh|bundle|exec|-*)]}
   title "$CMD" "%100>...>$2%<<"
 }
 
