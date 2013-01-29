@@ -16,7 +16,6 @@ if has("gui_running")
   set guioptions-=m
   set background=light
 else
-  set t_Co=256
   set background=dark
 endif
 

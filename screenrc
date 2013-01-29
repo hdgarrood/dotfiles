@@ -1,7 +1,16 @@
-startup_message off
+# Use C-x instead of C-a
 escape \030x
 
+startup_message off
 term screen-256color
 
+# status line
 hardstatus alwayslastline
 hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw} %?%-w%?%{r}(%{W}%n %t%?(%u)%?%{r})%{w}%?%+w%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
+# start window numbers from nd c screen 1
+bind ^c screen 1
+bind c screen 1
+bind 0 select 10
+screen 1
+
