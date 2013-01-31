@@ -8,7 +8,6 @@
 # for ssh logins, install and configure the libpam-umask package.
 
 export EDITOR=vim
-export TERM=xterm-256color
 
 # function for adding dirs to $PATH
 # note that this fails silently if arg doesn't exist
