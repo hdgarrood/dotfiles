@@ -1,3 +1,11 @@
+! use 256 colors
+! maybe it would be better to use ERB here... leaving this for now
+xterm*termName: xterm-256color
+
+! Fonts
+*faceName: Ubuntu Mono
+*faceSize: 14
+
 ! Solarized color scheme for the X Window System
 ! http://ethanschoonover.com/solarized
 
@@ -47,6 +55,3 @@
 *color14:                 S_base1
 *color15:                 S_base3
 
-! Fonts
-*faceName: Ubuntu Mono
-*faceSize: 14

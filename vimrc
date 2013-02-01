@@ -19,7 +19,7 @@ else
   set background=dark
 endif
 
-colorscheme default
+colorscheme solarized
 
 " --- general settings ---
 set backspace=indent,eol,start
