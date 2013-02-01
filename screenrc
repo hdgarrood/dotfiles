@@ -5,7 +5,7 @@ startup_message off
 
 # status line
 hardstatus alwayslastline
-hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw} %?%-w%?%{r}(%{W}%n %t%?(%u)%?%{r})%{w}%?%+w%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+hardstatus string '%{= kg}[ %{G}%H %{g}][%= %{= kw} %?%-w%?%{r}(%{W}%n %t%?(%u)%?%{r})%{w}%?%+w%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
 
 # start window numbers from nd c screen 1
 bind ^c screen 1
