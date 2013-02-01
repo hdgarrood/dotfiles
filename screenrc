@@ -2,7 +2,6 @@
 escape \030x
 
 startup_message off
-term screen-256color
 
 # status line
 hardstatus alwayslastline
