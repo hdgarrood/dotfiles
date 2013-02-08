@@ -120,14 +120,16 @@ nnoremap j gj
 nnoremap k gk
 
 " --- custom functions ---
-" increments a global counter, returning its initial value
-" increments by value of argument or 1
-" useful for search/replace to add list numbers
-function! Inc(...)
-  let result = g:i
-  let g:i += a:0 > 0 ? a:1 : 1
-  return result
+" Increase a number in a column -- use C-v and then C-a
+function! Incr()
+  let a = line('.') - line("'<")
+  let c = virtcol("'<")
+  if a > 0
+    execute 'normal! '.c.'|'.a."\<C-a>"
+  endif
+  normal `<
 endfunction
+vnoremap <C-a> :call Incr()<CR>
 
 " --- custom commands ---
 command! ClearSearchPattern let @/ = ""
