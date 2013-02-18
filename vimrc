@@ -53,9 +53,8 @@ set backupdir=~/.vim/_backups
 set splitright
 set splitbelow
 
-" break lines sensibly
+" break long lines
 set linebreak
-let &showbreak = '~> '
 
 " --- autocommands ---
 if has("autocmd")
