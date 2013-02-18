@@ -156,6 +156,15 @@ def pp_hash(hash)
   str << "\n}\n"
 end
 
+def ensure_in_root!
+  dot_root = File.expand_path(File.dirname(__FILE__))
+  if Dir.getwd != dot_root
+    puts "(in #{dot_root})"
+    Dir.chdir(dot_root)
+  end
+end
+
 if __FILE__ == $0
+  ensure_in_root!
   install_dotfiles
 end
