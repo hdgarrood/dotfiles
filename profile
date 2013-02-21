@@ -32,4 +32,5 @@ add_path() {
 }
 
 add_path --prepend $HOME/.bin 
+add_path --prepend $HOME/.local/bin
 add_path $HOME/.cabal/bin
