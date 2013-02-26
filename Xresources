@@ -6,6 +6,8 @@ xterm*termName: xterm-256color
 *faceName: Terminus
 *faceSize: 12
 
+URxvt*font: xft:Terminus:pixelsize=14
+
 ! Solarized color scheme for the X Window System
 ! http://ethanschoonover.com/solarized
 
