@@ -8,6 +8,9 @@ xterm*termName: xterm-256color
 
 URxvt*font: xft:Terminus:pixelsize=14
 
+! No fade when losing focus
+URxvt*fading: 0
+
 ! Solarized color scheme for the X Window System
 ! http://ethanschoonover.com/solarized
 
