@@ -58,7 +58,7 @@ set linebreak
 
 " trailing space
 set list
-set listchars=trail:•
+set listchars=trail:â€¢
 
 " --- autocommands ---
 if has("autocmd")
