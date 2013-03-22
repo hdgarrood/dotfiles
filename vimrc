@@ -56,6 +56,10 @@ set splitbelow
 " break long lines
 set linebreak
 
+" trailing space
+set list
+set listchars=trail:•
+
 " --- autocommands ---
 if has("autocmd")
   augroup all
