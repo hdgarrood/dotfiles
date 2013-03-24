@@ -57,8 +57,8 @@ set splitbelow
 set linebreak
 
 " trailing space
-set list
-set listchars=trail:•
+highlight TrailingSpace ctermbg=red guibg=red
+match TrailingSpace /\s\+$/
 
 " --- autocommands ---
 if has("autocmd")
