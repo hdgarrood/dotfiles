@@ -66,6 +66,7 @@ if has("autocmd")
     autocmd!
     au BufRead,BufNewFile *.\(md\|markdown\) set filetype=markdown
     au BufRead,BufNewFile *.\(pkg\|vw\|ddo\|sbs\|zm\|src\) set filetype=vdf
+    au BufRead,BufNewFile *.\json set ft=javascript sw=2 et
 
     au FileType make          set noexpandtab
     au FileType gitcommit     set tw=72 colorcolumn=73
