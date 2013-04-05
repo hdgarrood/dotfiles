@@ -1,4 +1,8 @@
 set nocompatible
+
+" don't use 'conceal' in Rust
+let g:no_rust_conceal=1
+
 call pathogen#infect()
 syntax on
 filetype plugin indent on
@@ -57,7 +61,7 @@ set splitbelow
 set linebreak
 
 " trailing space
-highlight TrailingSpace ctermbg=red guibg=red
+highlight TrailingSpace ctermbg=white guibg=#073642
 match TrailingSpace /\s\+$/
 
 " --- autocommands ---
