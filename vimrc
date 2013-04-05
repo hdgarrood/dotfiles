@@ -8,13 +8,13 @@ if has("gui_running")
   if has("win32")
     set guifont=consolas:h12
   else
-    set guifont=Terminus\ 12
+    set guifont=Inconsolata\ 12
   endif
   " remove all that gui clutter
   set guioptions-=r
   set guioptions-=T
   set guioptions-=m
-  set background=light
+  set background=dark
 else
   set background=dark
 endif
@@ -112,8 +112,8 @@ nnoremap <leader>p "+gP
 vnoremap <leader>p "+gP
 
 " open help in a vertical window
-nnoremap <leader>h :vertical help 
-vnoremap <leader>h :vertical help 
+nnoremap <leader>h :vertical help
+vnoremap <leader>h :vertical help
 
 " shortcut for clearing the search pattern
 nnoremap <leader><space> :ClearSearchPattern<cr>
