@@ -37,12 +37,13 @@ if [[ -x `which notify-send` ]]; then
     }
 
     notify-precmd-hook() {
+        local exit_status=$?
         local time_taken
 
         if [[ "${zsh_notifier_cmd}" != "" ]]; then
             time_taken=$(( `date +%s` - ${zsh_notifier_time} ))
             if (( $time_taken > $REPORTTIME )); then
-                msg="'$zsh_notifier_cmd' exited with status $? after `seconds-to-hms $time_taken`"
+                msg="'$zsh_notifier_cmd' exited with status $exit_status after `seconds-to-hms $time_taken`"
                 notify-send "task finished" "$msg"
             fi
         fi
@@ -53,5 +54,9 @@ fi
 [[ -z $preexec_functions ]] && preexec_functions=()
 preexec_functions=($preexec_functions notify-preexec-hook)
 
+# notifier-precmd-hook must be the first precmd function, otherwise $?
+# will be lost.
+# Note that this also means that it must be the last element of the
+# plugins array set in zshrc.
 [[ -z $precmd_functions ]] && precmd_functions=()
-precmd_functions=($precmd_functions notify-precmd-hook)
+precmd_functions=(notify-precmd-hook $precmd_functions)
