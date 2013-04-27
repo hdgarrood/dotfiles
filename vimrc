@@ -19,11 +19,11 @@ if has("gui_running")
   set guioptions-=T
   set guioptions-=m
   set background=dark
+  colorscheme solarized
 else
   set background=dark
+  colorscheme elflord
 endif
-
-colorscheme solarized
 
 " --- general settings ---
 set backspace=indent,eol,start
