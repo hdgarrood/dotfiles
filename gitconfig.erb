@@ -23,3 +23,7 @@
     user = <%= DotfilesConfig['github_username'] %>
 [web]
     browser = chromium-browser
+<% if (helper = DotfilesConfig['git_credential_helper']) %>
+[credential]
+    helper = <%= helper %>
+<% end %>
