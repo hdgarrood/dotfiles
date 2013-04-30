@@ -10,9 +10,12 @@ set novisualbell
 
 colorscheme vimium
 
-nmap w <Nop>
-nmap d <Nop>
-nmap u <Nop>
+command! -nargs=0 SlapWrist :echoerr "NO!!!"
+
+nmap w      :SlapWrist<CR>
+nmap d      :SlapWrist<CR>
+nmap u      :SlapWrist<CR>
+nmap <C-t>  :SlapWrist<CR>
 
 nmap d <C-d>
 nmap u <C-u>
