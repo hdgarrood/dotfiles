@@ -1,8 +1,7 @@
 " so that it works on windows
 set runtimepath=~/.vimperator
 
-set hintkeys='asdflkjhgqweroiupzxcvmnbty'
-" set guioptions+=T
+set hintchars='asdflkjhgqweroiupzxcvmnbty'
 
 set titlestring=Mozilla\ Firefox
 
