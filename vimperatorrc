@@ -15,7 +15,7 @@ command! -nargs=0 SlapWrist :echoerr "NO!!!"
 nmap w      :SlapWrist<CR>
 nmap d      :SlapWrist<CR>
 nmap u      :SlapWrist<CR>
-nmap <C-t>  :SlapWrist<CR>
+map <C-t>  :SlapWrist<CR>
 
 nmap d <C-d>
 nmap u <C-u>
