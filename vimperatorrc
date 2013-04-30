@@ -1,9 +1,14 @@
+" so that it works on windows
+set runtimepath=~/.vimperator
+
 set hintkeys='asdflkjhgqweroiupzxcvmnbty'
-set guioptions+=T
+" set guioptions+=T
 
 set titlestring=Mozilla\ Firefox
+
 " don't need to press enter to follow hints
-set followhints=0
+" set followhints=0
+
 set wildmode=list:longest,full
 
 set hlfind
@@ -26,4 +31,3 @@ nmap J :tabprevious<CR>
 nmap K :tabnext<CR>
 nmap x :quit<CR>
 nmap X :undo<CR>
-nmap B :back<CR>
