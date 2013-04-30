@@ -2,17 +2,9 @@
 set runtimepath=~/.vimperator
 
 set hintchars='asdflkjhgqweroiupzxcvmnbty'
-
 set titlestring=Mozilla\ Firefox
-
-" don't need to press enter to follow hints
-" set followhints=0
-
 set wildmode=list:longest,full
 
-set hlfind
-set incfind
-set findcase=smart
 set noerrorbells
 set novisualbell
 
