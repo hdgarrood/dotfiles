@@ -25,3 +25,7 @@ nmap J :tabprevious<CR>
 nmap K :tabnext<CR>
 nmap x :quit<CR>
 nmap X :undo<CR>
+
+" Swap forward and back
+map <C-i>   :back<CR>
+map <C-o>   :forward<CR>
