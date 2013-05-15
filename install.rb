@@ -81,7 +81,7 @@ end
 
 def file_excluded?(file)
   # ignore these specific files
-  return true if %w(install.rb .gitignore config.rb).include?(file)
+  return true if %w(install.rb .gitignore .gitmodules config.rb).include?(file)
   # ignore everything in '_extras/'
   return true if file.include?('_extras/')
   false
