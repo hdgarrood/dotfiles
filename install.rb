@@ -40,7 +40,7 @@ def copy_dotfiles
   count_total = 0
 
   Dir['**/*'].each do |file|
-    next if file_excluded?(file) || File.directory?(file)
+    next if file_excluded?(file)
     count_total += 1
 
     next if fix_symlink_if_broken(file)
@@ -80,6 +80,8 @@ def copy_dotfiles
 end
 
 def file_excluded?(file)
+  # ignore directories
+  return true if File.directory?(file)
   # ignore these specific files
   return true if %w(install.rb .gitignore .gitmodules config.rb).include?(file)
   # ignore everything in '_extras/'
