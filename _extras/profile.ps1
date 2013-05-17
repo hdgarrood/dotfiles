@@ -18,6 +18,7 @@ if ($?) {
         write-host (get-location) -nonewline
         write-vcsstatus
         write-host "`n" -nonewline
+        $? = $tmp_exit_code
         return "> "
     }
 
