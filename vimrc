@@ -127,6 +127,10 @@ vnoremap <leader><space> :ClearSearchPattern<cr>
 nnoremap j gj
 nnoremap k gk
 
+" tabularize shortcut
+vnoremap <leader>t :Tabularize /
+nnoremap <leader>t :Tabularize /
+
 " --- custom functions ---
 " Increase a number in a column -- use C-v and then C-a
 function! Incr()
