@@ -20,6 +20,9 @@ if has("gui_running")
   set guioptions-=m
   set background=dark
   colorscheme solarized
+
+  " show 80 columns of text
+  winsize 84 30
 else
   set background=dark
   colorscheme elflord
