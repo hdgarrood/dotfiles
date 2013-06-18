@@ -63,3 +63,35 @@ bake-notify() {
     bake $1
     notify-send "bake done" "task '$1' finished with status $?"
 }
+
+# Read text from stdin, and echo a version of the same text, just better suited
+# for a filename.
+sanitise-filename() {
+    echo -n "$1" | tr -c -s 'a-zA-Z0-9.-' '-'
+}
+
+# Wrapper around sanitise-filename which takes a list of files and renames them
+# for you. Example use:
+#
+#   sanitise-rename-files *
+#   sanitise-rename-files *.doc
+#
+sanitise-rename-files() {
+    local exitcode=0
+    local sanitised
+
+    for file in $*; do
+        sanitised=$(sanitise-filename "$file")
+
+        [ "$sanitised" = "$file" ] && continue
+
+        if [ -f "$sanitised" ]; then
+            echo >&2 "$0: can't rename $file, $sanitised already exists"
+            exitcode=1
+        else
+            mv -- "$file" "$sanitised"
+        fi
+    done
+
+    return $exitcode
+}
