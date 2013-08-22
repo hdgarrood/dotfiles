@@ -67,6 +67,9 @@ set linebreak
 highlight TrailingSpace ctermbg=white guibg=#073642
 match TrailingSpace /\s\+$/
 
+" switch to buffers in a new tab instead of splitting
+set switchbuf=usetab
+
 " --- autocommands ---
 if has("autocmd")
   augroup all
