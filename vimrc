@@ -3,7 +3,7 @@ set nocompatible
 " don't use 'conceal' in Rust
 let g:no_rust_conceal=1
 
-call pathogen#infect()
+silent! call pathogen#infect()
 syntax on
 filetype plugin indent on
 
@@ -31,7 +31,10 @@ endif
 " --- general settings ---
 set backspace=indent,eol,start
 set showcmd
-set relativenumber
+
+if exists('&relativenumber')
+  set relativenumber
+endif
 
 set hlsearch
 set incsearch
@@ -41,7 +44,9 @@ set smartcase
 set scrolloff=5
 set sidescrolloff=5
 
-set colorcolumn=80
+if exists('&colorcolumn')
+  set colorcolumn=80
+endif
 
 set expandtab
 set tabstop=4
