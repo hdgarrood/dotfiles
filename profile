@@ -31,9 +31,9 @@ add_path() {
     done
 }
 
-add_path --prepend $HOME/.bin
-add_path --prepend $HOME/.local/bin
-add_path $HOME/.cabal/bin
+add_path --prepend "$HOME/.bin"
+add_path --prepend "$HOME/.local/bin"
+add_path --prepend "$HOME/.cabal/bin"
 
 # Auto-start GNU screen
 if [ -z "$STY" ] && [ -f ~/.screen-autostart ]; then
