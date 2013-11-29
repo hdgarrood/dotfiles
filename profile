@@ -10,7 +10,7 @@
 export EDITOR=vim
 
 # function for adding dirs to $PATH
-# note that this fails silently if arg doesn't exist
+# silently does nothing if an argument isn't a directory
 add_path() {
     local PREPEND="false"
 
@@ -31,11 +31,13 @@ add_path() {
     done
 }
 
-add_path --prepend "$HOME/.bin"
-add_path --prepend "$HOME/.local/bin"
-add_path --prepend "$HOME/.cabal/bin"
+add_path --prepend                      \
+    "$HOME/.bin"                        \
+    "$HOME/.local/bin"                  \
+    "$HOME/.cabal/bin"                  \
+    "/usr/local/heroku/bin"
 
 # Auto-start GNU screen
-if [ -z "$STY" ] && [ -f ~/.screen-autostart ]; then
+if [ -z "$STY" ] && [ -f "~/.screen-autostart" ]; then
     screen -dRR
 fi
