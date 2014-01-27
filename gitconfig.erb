@@ -5,7 +5,7 @@
     co = checkout
     st = status
     ci = commit
-    rm-submodule = "!f(){ git rm --force \"$1\";git config -f .gitmodules --remove-section \"submodule.$1\";git config -f .git/config --remove-section \"submodule.$1\";git add .gitmodules; }; f"
+    rm-submodule = "!f(){ git rm -rf \"$1\";git config -f .gitmodules --remove-section \"submodule.$1\";git config -f .git/config --remove-section \"submodule.$1\";git add .gitmodules; }; f"
 [color]
     diff = auto
     status = auto
