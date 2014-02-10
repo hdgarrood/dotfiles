@@ -16,11 +16,11 @@ __bash_prompt() {
     fi
 
     # user@host
-    printf "${CYAN}${USER}${RESETCOLOUR}@${BROWN}${HOSTNAME}${RESETCOLOUR}: "
+    echo -en "${CYAN}${USER}${RESETCOLOUR}@${BROWN}${HOSTNAME}${RESETCOLOUR}: "
     # cwd
-    printf "${GREEN}${PWD/#$HOME/~}${RESETCOLOUR} "
+    echo -en "${GREEN}${PWD/#$HOME/~}${RESETCOLOUR} "
     # git stuff
-    printf "${PURPLE}$(__git_ps1 "(%s)")${RESETCOLOUR}\n"
+    echo -e "${PURPLE}$(__git_ps1 "(%s)")${RESETCOLOUR}"
 }
 
 PS1="$ "
