@@ -30,25 +30,57 @@ seconds-to-hms() {
         { hms($0); }'
 }
 
-REPORTTIME=10
+LONG_RUNNING_COMMAND_TIMEOUT=10
 
-if [[ -x `which notify-send` ]]; then
-    bash-notify-preexec-hook() {
-        bash_notifier_cmd="$1"
-        bash_notifier_time="`date +%s`"
-    }
+notify_when_long_running_commands_finish_install() {
+    local RUNNING_COMMANDS_DIR=~/.cache/running-commands
+    mkdir -p $RUNNING_COMMANDS_DIR
+    for pid_file in $RUNNING_COMMANDS_DIR/*; do
+        local pid=$(basename $pid_file)
+        # If $pid is numeric, then check for a running bash process.
+        case $pid in
+        ''|*[!0-9]*) local numeric=0 ;;
+        *) local numeric=1 ;;
+        esac
 
-    bash-notify-precmd-hook() {
-        local exit_status=$?
-        local time_taken
-
-        if [[ "${bash_notifier_cmd}" != "" ]]; then
-            time_taken=$(( `date +%s` - ${bash_notifier_time} ))
-            if (( $time_taken > $REPORTTIME )); then
-                msg="'$bash_notifier_cmd' exited with status $exit_status after `seconds-to-hms $time_taken`"
-                notify-send "task finished" "$msg"
+        if [[ $numeric -eq 1 ]]; then
+            local command=$(ps -o command= $pid)
+            if [[ $command != $BASH ]]; then
+                rm -f $pid_file
             fi
         fi
-        bash_notifier_cmd=
+    done
+
+    _LAST_COMMAND_STARTED_CACHE=$RUNNING_COMMANDS_DIR/$$
+
+    function bash-notify-precmd-hook() {
+        local exit_status=$?
+        if [[ -r $_LAST_COMMAND_STARTED_CACHE ]]; then
+
+            local last_command_started=$(head -1 $_LAST_COMMAND_STARTED_CACHE)
+            local last_command=$(tail -n +2 $_LAST_COMMAND_STARTED_CACHE)
+
+            if [[ -n $last_command_started ]]; then
+                local now=$(date -u +%s)
+                local time_taken=$(( $now - $last_command_started ))
+                if [[ $time_taken -gt $LONG_RUNNING_COMMAND_TIMEOUT ]]; then
+                  if [ `echo "$last_command" | egrep -c "less|more|vi|vim|man|ssh"` == 1 ] ; then
+                    exit 0
+                  else
+                    local msg="'$last_command' exited with status $exit_status after `seconds-to-hms $time_taken`"
+                    notify-send "task finished" "$msg"
+                  fi
+                fi
+            fi
+            # No command is running, so clear the cache.
+            echo -n > $_LAST_COMMAND_STARTED_CACHE
+        fi
     }
-fi
+
+    function bash-notify-preexec-hook() {
+        date -u +%s > $_LAST_COMMAND_STARTED_CACHE
+        echo "$1" >> $_LAST_COMMAND_STARTED_CACHE
+    }
+}
+
+notify_when_long_running_commands_finish_install
