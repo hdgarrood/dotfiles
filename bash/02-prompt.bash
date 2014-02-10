@@ -3,12 +3,18 @@ __bash_prompt() {
     local CYAN="\033[0;36m"
     local BROWN="\033[0;33m"
     local GREEN="\033[0;32m"
+    local PURPLE="\033[0;35m"
 
     if [[ -n "$?" && "$?" -gt 0 ]]; then
         echo "exit code was $?"
     fi
 
-    printf "${CYAN}${USER}${RESETCOLOUR}@${BROWN}${HOSTNAME}${RESETCOLOUR}: ${GREEN}${PWD/#$HOME/~}${RESETCOLOUR} $(__git_ps1 "(%s)")\n"
+    # user@host
+    printf "${CYAN}${USER}${RESETCOLOUR}@${BROWN}${HOSTNAME}${RESETCOLOUR}: "
+    # cwd
+    printf "${GREEN}${PWD/#$HOME/~}${RESETCOLOUR} "
+    # git stuff
+    printf "${PURPLE}$(__git_ps1 "(%s)")${RESETCOLOUR}\n"
 }
 
 PS1="$ "
