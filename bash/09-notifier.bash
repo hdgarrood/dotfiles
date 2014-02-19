@@ -75,11 +75,13 @@ notify_when_long_running_commands_finish_install() {
             # No command is running, so clear the cache.
             echo -n > $_LAST_COMMAND_STARTED_CACHE
         fi
+		return 0
     }
 
     function bash-notify-preexec-hook() {
         date -u +%s > $_LAST_COMMAND_STARTED_CACHE
         echo "$1" >> $_LAST_COMMAND_STARTED_CACHE
+		return 0
     }
 }
 
