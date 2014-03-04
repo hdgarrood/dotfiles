@@ -85,4 +85,4 @@ notify_when_long_running_commands_finish_install() {
     }
 }
 
-notify_when_long_running_commands_finish_install
+#notify_when_long_running_commands_finish_install
