@@ -1,6 +1,6 @@
 ! Fonts
-URxvt*font: xft:Inconsolata:pixelsize=16
-URxvt.letterSpace:  -1
+URxvt*font: x:fixed
+URxvt.letterSpace: 0
 
 ! Solarized color scheme for the X Window System
 ! http://ethanschoonover.com/solarized
