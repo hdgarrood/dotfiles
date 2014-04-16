@@ -18,3 +18,5 @@ __pycache__
 *.o
 .cabal-sandbox/
 cabal.sandbox.config
+*.elmi
+*.elmo
