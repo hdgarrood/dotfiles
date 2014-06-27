@@ -11,6 +11,8 @@ filetype plugin indent on
 if has("gui_running")
   if has("win32")
     set guifont=consolas:h12
+  elseif has("mac")
+    set guifont=Monaco:h14
   else
     set guifont=Ubuntu\ Mono\ 12
   endif
