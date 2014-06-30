@@ -32,6 +32,7 @@ add_path() {
 }
 
 add_path --prepend                      \
+    "/usr/local/bin"                    \
     "$HOME/.bin"                        \
     "$HOME/.local/bin"                  \
     "$HOME/.cabal/bin"                  \
