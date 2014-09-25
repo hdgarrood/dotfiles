@@ -10,3 +10,5 @@ fi
 # ruby
 alias bake='bundle exec rake'
 alias bexc='bundle exec'
+
+alias fuck='sudo $(history -p \!\!)'
