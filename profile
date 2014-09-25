@@ -36,7 +36,8 @@ add_path --prepend                      \
     "$HOME/.bin"                        \
     "$HOME/.local/bin"                  \
     "$HOME/.cabal/bin"                  \
-    "/usr/local/heroku/bin"
+    "/usr/local/heroku/bin"             \
+    "/opt/ghc/7.8.3/bin"
 
 # Auto-start GNU screen
 if [ -z "$STY" ] && [ -f "~/.screen-autostart" ]; then
