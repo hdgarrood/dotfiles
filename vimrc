@@ -86,10 +86,10 @@ if has("autocmd")
     au BufRead,BufNewFile *.\(pkg\|vw\|ddo\|sbs\|zm\|src\) set filetype=vdf
     au BufRead,BufNewFile *.\json set ft=javascript sw=2 et
 
-    au FileType make          set noexpandtab
-    au FileType gitcommit     set tw=72 colorcolumn=73
-    au FileType markdown      set tw=79
-    au FileType ruby,vim,haml set sts=2 sw=2
+    au FileType make                     set noexpandtab
+    au FileType gitcommit                set tw=72 colorcolumn=73
+    au FileType markdown                 set tw=79
+    au FileType ruby,vim,haml,purescript set sts=2 sw=2
   augroup END
 endif
 
