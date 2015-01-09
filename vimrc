@@ -86,10 +86,10 @@ if has("autocmd")
     au BufRead,BufNewFile *.\(pkg\|vw\|ddo\|sbs\|zm\|src\) set filetype=vdf
     au BufRead,BufNewFile *.\json set ft=javascript sw=2 et
 
-    au FileType make                     set noexpandtab
-    au FileType gitcommit                set tw=72 colorcolumn=73
-    au FileType markdown                 set tw=79
-    au FileType ruby,vim,haml,purescript set sts=2 sw=2
+    au FileType make                                  set noexpandtab
+    au FileType gitcommit                             set tw=72 colorcolumn=73
+    au FileType markdown                              set tw=0
+    au FileType ruby,vim,haml,purescript,javascript   set sts=2 sw=2 et
   augroup END
 endif
 
@@ -104,17 +104,12 @@ if has("statusline")
   " Add filetype + eoltype
   set statusline+=[%{&ff}/%Y]
 
-  " Add fugitive
-  set statusline+=%{fugitive#statusline()}
-
   " add present working dir
   set statusline+=\ %5{getcwd()}
 
   " Finish the statusline
-  set statusline+=\ %=Line:%l/%L[%p%%]
+  set statusline+=\ %=Line:%l[%p%%]
   set statusline+=\ Col:%v
-  set statusline+=\ Buf:%n
-  set statusline+=\ [%b][0x%B]
 endif
 
 " --- custom key mappings ---
@@ -136,10 +131,6 @@ vnoremap <leader>h :vertical help
 " shortcut for clearing the search pattern
 nnoremap <leader><space> :ClearSearchPattern<cr>
 vnoremap <leader><space> :ClearSearchPattern<cr>
-
-" sensible navigation for wrapped lines
-nnoremap j gj
-nnoremap k gk
 
 " tabularize shortcut
 vnoremap <leader>t :Tabularize /
