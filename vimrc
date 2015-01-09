@@ -104,9 +104,6 @@ if has("statusline")
   " Add filetype + eoltype
   set statusline+=[%{&ff}/%Y]
 
-  " add present working dir
-  set statusline+=\ %5{getcwd()}
-
   " Finish the statusline
   set statusline+=\ %=Line:%l[%p%%]
   set statusline+=\ Col:%v
@@ -135,6 +132,10 @@ vnoremap <leader><space> :ClearSearchPattern<cr>
 " tabularize shortcut
 vnoremap <leader>t :Tabularize /
 nnoremap <leader>t :Tabularize /
+
+" command-t shortcut
+vnoremap <leader>r :CommandT<CR>
+nnoremap <leader>r :CommandT<CR>
 
 " --- custom functions ---
 " Increase a number in a column -- use C-v and then C-a
