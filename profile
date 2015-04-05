@@ -8,6 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 
 export EDITOR=vim
+export PYTHONSTARTUP="$HOME/.python"
 
 if [ -f "$HOME/.bashrc.force" ]; then
     source "$HOME/.bashrc.force"
