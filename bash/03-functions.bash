@@ -84,3 +84,27 @@ sanitise-rename-files() {
 
     return $exitcode
 }
+
+
+# function for adding dirs to $PATH
+# silently does nothing if an argument isn't a directory
+add_path() {
+    local PREPEND="false"
+
+    # basic arg parsing
+    if [ "$1" = "--prepend" ]; then
+        PREPEND="true"
+        shift
+    fi
+
+    for ARG in $*; do
+        if [ -d $ARG ]; then
+            if [ "$PREPEND" = "true" ]; then
+                export PATH="$ARG:$PATH"
+            else
+                export PATH="$PATH:$ARG"
+            fi
+        fi
+    done
+}
+
