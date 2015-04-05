@@ -9,13 +9,20 @@
 
 export EDITOR=vim
 
-add_path --prepend                      \
-    "/usr/local/bin"                    \
-    "$HOME/.bin"                        \
-    "$HOME/.local/bin"                  \
-    "$HOME/.cabal/bin"                  \
-    "/usr/local/heroku/bin"             \
-    "/opt/ghc/7.8.3/bin"
+if [ -f "$HOME/.bashrc.force" ]; then
+    source "$HOME/.bashrc.force"
+
+    # Add paths which are common to all systems
+    add_path --prepend        \
+        "/usr/local/bin"      \
+        "$HOME/.bin"          \
+        "$HOME/.local/bin"    \
+        "$HOME/.cabal/bin"
+
+    if [ -f "$HOME/.profile.local" ]; then
+        source "$HOME/.profile.local"
+    fi
+fi
 
 # Auto-start GNU screen
 if [ -z "$STY" ] && [ -f "~/.screen-autostart" ]; then
