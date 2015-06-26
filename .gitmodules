@@ -24,6 +24,3 @@
 	url = https://github.com/urso/haskell_syntax.vim
 
 # delete these
-[submodule "vim/bundle/purescript-vim"]
-	path = vim/bundle/purescript-vim
-	url = https://github.com/urso/haskell_syntax.vim
