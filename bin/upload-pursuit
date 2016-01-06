@@ -1,0 +1,31 @@
+#!/bin/bash -e
+
+function die() {
+  echo $1
+  exit 1
+}
+
+which jq >/dev/null || die "'jq' not found on PATH"
+
+PURSUIT_JSON="$HOME/uploads/pursuit.json"
+
+test -f "$PURSUIT_JSON" || die "$PURSUIT_JSON does not exist."
+
+json=$(cat $PURSUIT_JSON)
+name=$(jq -r .packageMeta.name <<<"$json")
+version=$(jq -r .version <<<"$json")
+
+echo -n "Uploading ${name} at ${version}. Is this ok? [y/n] "
+
+read line
+if [ "$line" = "y" ] || [ "$line" = "Y" ]; then
+  curl -X POST \
+    http://pursuit.purescript.org/packages \
+    -d @"$HOME/uploads/pursuit.json" \
+    -H 'Accept: application/json' \
+    -H "Authorization: token $(cat $HOME/.pulp/github-oauth-token)" \
+    -v
+else
+  echo "Ok, not uploading anything."
+fi
+
