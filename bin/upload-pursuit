@@ -7,11 +7,13 @@ function die() {
 
 which jq >/dev/null || die "'jq' not found on PATH"
 
-PURSUIT_JSON="$HOME/uploads/pursuit.json"
+PURSUIT_JSON="/tmp/pursuit.json"
+
+psc-publish >"$PURSUIT_JSON"
 
 test -f "$PURSUIT_JSON" || die "$PURSUIT_JSON does not exist."
 
-json=$(cat $PURSUIT_JSON)
+json=$(cat "$PURSUIT_JSON")
 name=$(jq -r .packageMeta.name <<<"$json")
 version=$(jq -r .version <<<"$json")
 
@@ -21,7 +23,7 @@ read line
 if [ "$line" = "y" ] || [ "$line" = "Y" ]; then
   curl -X POST \
     http://pursuit.purescript.org/packages \
-    -d @"$HOME/uploads/pursuit.json" \
+    -d @"$PURSUIT_JSON" \
     -H 'Accept: application/json' \
     -H "Authorization: token $(cat $HOME/.pulp/github-oauth-token)" \
     -v
