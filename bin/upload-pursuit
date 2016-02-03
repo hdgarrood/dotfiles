@@ -22,7 +22,7 @@ echo -n "Uploading ${name} at ${version}. Is this ok? [y/n] "
 read line
 if [ "$line" = "y" ] || [ "$line" = "Y" ]; then
   curl -X POST \
-    http://pursuit.purescript.org/packages \
+    https://pursuit.purescript.org/packages \
     -d @"$PURSUIT_JSON" \
     -H 'Accept: application/json' \
     -H "Authorization: token $(cat $HOME/.pulp/github-oauth-token)" \
