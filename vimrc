@@ -23,9 +23,6 @@ if has("gui_running")
   set guioptions-=e
   set background=dark
   colorscheme solarized
-
-  " show 80 columns of text
-  winsize 84 30
 else
   set background=dark
   colorscheme elflord
@@ -136,6 +133,12 @@ nnoremap <leader>t :Tabularize /
 " command-t shortcut
 vnoremap <leader>r :CommandT<CR>
 nnoremap <leader>r :CommandT<CR>
+
+" next/previous error
+vnoremap <leader>n :lnext<CR>
+nnoremap <leader>n :lnext<CR>
+vnoremap <leader>N :lprevious<CR>
+nnoremap <leader>N :lprevious<CR>
 
 " --- custom functions ---
 " Increase a number in a column -- use C-v and then C-a
