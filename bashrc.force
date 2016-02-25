@@ -7,3 +7,7 @@ BASH_CONFIG_FILES=~/.bash/*.bash
 for config_file in $BASH_CONFIG_FILES; do
     source "$config_file"
 done
+
+if [ -f ~/.bashrc.local ]; then
+    source ~/.bashrc.local
+fi
