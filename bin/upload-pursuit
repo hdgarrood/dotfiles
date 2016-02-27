@@ -8,6 +8,7 @@ function die() {
 which jq >/dev/null || die "'jq' not found on PATH"
 
 PURSUIT_JSON="/tmp/pursuit.json"
+PURSUIT_JSON_GZ="/tmp/pursuit.json.gz"
 
 psc-publish >"$PURSUIT_JSON"
 
@@ -19,11 +20,14 @@ version=$(jq -r .version <<<"$json")
 
 echo -n "Uploading ${name} at ${version}. Is this ok? [y/n] "
 
+gzip <"$PURSUIT_JSON" >"$PURSUIT_JSON_GZ"
+
 read line
 if [ "$line" = "y" ] || [ "$line" = "Y" ]; then
   curl -X POST \
     https://pursuit.purescript.org/packages \
-    -d @"$PURSUIT_JSON" \
+    --data-binary @"$PURSUIT_JSON_GZ" \
+    -H 'Content-Encoding: gzip' \
     -H 'Accept: application/json' \
     -H "Authorization: token $(cat $HOME/.pulp/github-oauth-token)" \
     -v
