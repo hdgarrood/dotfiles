@@ -22,3 +22,6 @@
 [submodule "vim/bundle/syntastic"]
     path = vim/bundle/syntastic
     url = https://github.com/Scrooloose/syntastic
+[submodule "vim/bundle/purescript-vim"]
+	path = vim/bundle/purescript-vim
+	url = https://github.com/raichoo/purescript-vim
