@@ -49,9 +49,9 @@ if exists('&colorcolumn')
 endif
 
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 set autoindent
 
@@ -81,12 +81,11 @@ if has("autocmd")
     autocmd!
     au BufRead,BufNewFile *.\(md\|markdown\) set filetype=markdown
     au BufRead,BufNewFile *.\(pkg\|vw\|ddo\|sbs\|zm\|src\) set filetype=vdf
-    au BufRead,BufNewFile *.\json set ft=javascript sw=2 et
+    au BufRead,BufNewFile *.\json set ft=javascript
 
-    au FileType make                                  set noexpandtab
-    au FileType gitcommit                             set tw=72 colorcolumn=73
-    au FileType markdown                              set tw=0
-    au FileType ruby,vim,haml,purescript,javascript   set sts=2 sw=2 et
+    au FileType make set noexpandtab
+    au FileType gitcommit set tw=72 colorcolumn=73
+    au FileType markdown set tw=0
   augroup END
 endif
 
@@ -139,6 +138,13 @@ vnoremap <leader>n :lnext<CR>
 nnoremap <leader>n :lnext<CR>
 vnoremap <leader>N :lprevious<CR>
 nnoremap <leader>N :lprevious<CR>
+
+" --- variables for plugins
+let g:purescript_indent_if = 2
+let g:purescript_indent_case = 2
+let g:purescript_indent_let = 4
+let g:purescript_indent_where = 0
+let g:purescript_indent_do = 0
 
 " --- custom functions ---
 " Increase a number in a column -- use C-v and then C-a
