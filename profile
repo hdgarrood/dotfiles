@@ -19,7 +19,8 @@ if [ -f "$HOME/.bashrc.force" ]; then
         "$HOME/.bin"                  \
         "$HOME/.local/bin"            \
         "$HOME/.cabal/bin"            \
-        "$HOME/.npm-packages/bin"
+        "$HOME/.npm-packages/bin"     \
+        "$HOME/.psvm/current/bin"
 
     if [ -f "$HOME/.profile.local" ]; then
         source "$HOME/.profile.local"
