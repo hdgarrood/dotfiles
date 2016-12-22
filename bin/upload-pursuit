@@ -9,7 +9,7 @@ PURSUIT_HOST="https://pursuit.purescript.org"
 
 while [ "$#" -gt 0 ]
 do
-  case "$1" of
+  case "$1" in
     -h|--help)
       echo "upload-pursuit"
       echo "usage:"
@@ -20,12 +20,14 @@ do
       echo
       echo "options:"
       echo "--dev"
-      echo "  upload to http://localhost:3000/ instead of https://pursuit.purescript.org/";;
+      echo "  upload to http://localhost:3000/ instead of https://pursuit.purescript.org/"
+      exit;;
     --dev)
       PURSUIT_HOST="http://localhost:3000";;
     *)
       die "Unrecognised option '$1'"
   esac
+  shift
 done
 
 
