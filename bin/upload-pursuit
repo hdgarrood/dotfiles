@@ -5,6 +5,30 @@ function die() {
   exit 1
 }
 
+PURSUIT_HOST="https://pursuit.purescript.org"
+
+while [ "$#" -gt 0 ]
+do
+  case "$1" of
+    -h|--help)
+      echo "upload-pursuit"
+      echo "usage:"
+      echo "  upload-pursuit [--dev]"
+      echo
+      echo "Uploads the purescript package in the current directory"
+      echo "to pursuit."
+      echo
+      echo "options:"
+      echo "--dev"
+      echo "  upload to http://localhost:3000/ instead of https://pursuit.purescript.org/";;
+    --dev)
+      PURSUIT_HOST="http://localhost:3000";;
+    *)
+      die "Unrecognised option '$1'"
+  esac
+done
+
+
 which jq >/dev/null || die "'jq' not found on PATH"
 
 PURSUIT_JSON="/tmp/pursuit.json"
@@ -25,7 +49,7 @@ gzip <"$PURSUIT_JSON" >"$PURSUIT_JSON_GZ"
 read line
 if [ "$line" = "y" ] || [ "$line" = "Y" ]; then
   curl -X POST \
-    https://pursuit.purescript.org/packages \
+    "${PURSUIT_HOST}/packages" \
     --data-binary @"$PURSUIT_JSON_GZ" \
     -H 'Content-Encoding: gzip' \
     -H 'Accept: application/json' \
