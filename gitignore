@@ -3,6 +3,10 @@
 .swp
 .swo
 
+# emacs
+\#*\#
+.\#*
+
 # libreoffice lock files
 .~lock*#
 
