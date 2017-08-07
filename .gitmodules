@@ -24,4 +24,7 @@
     url = https://github.com/Scrooloose/syntastic
 [submodule "vim/bundle/purescript"]
 	path = vim/bundle/purescript
-	url = git@github.com:hdgarrood/purescript-vim
+	url = https://github.com/raichoo/purescript-vim
+[submodule "vim/bundle/psc-ide-vim"]
+	path = vim/bundle/psc-ide-vim
+	url = https://github.com/FrigoEU/psc-ide-vim
