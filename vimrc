@@ -139,14 +139,6 @@ nnoremap <leader>n :lnext<CR>
 vnoremap <leader>N :lprevious<CR>
 nnoremap <leader>N :lprevious<CR>
 
-" --- variables for plugins
-let g:purescript_indent_if = 2
-let g:purescript_indent_case = 2
-let g:purescript_indent_let = 4
-let g:purescript_indent_where = 0
-let g:purescript_indent_do = 0
-let g:purescript_indent_style = "jondentation"
-
 " --- custom functions ---
 " Increase a number in a column -- use C-v and then C-a
 function! Incr()
