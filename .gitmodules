@@ -20,9 +20,9 @@
 	path = vim/bundle/haskell_syntax
 	url = https://github.com/urso/haskell_syntax.vim
 [submodule "vim/bundle/syntastic"]
-    path = vim/bundle/syntastic
-    url = https://github.com/Scrooloose/syntastic
-[submodule "vim/bundle/purescript"]
+	path = vim/bundle/syntastic
+	url = https://github.com/Scrooloose/syntastic
+[submodule "vim/bundle/purescript-vim"]
 	path = vim/bundle/purescript
 	url = https://github.com/raichoo/purescript-vim
 [submodule "vim/bundle/psc-ide-vim"]
