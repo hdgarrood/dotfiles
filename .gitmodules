@@ -19,3 +19,6 @@
 [submodule "vim/bundle/purescript-vim"]
 	path = vim/bundle/purescript
 	url = https://github.com/raichoo/purescript-vim
+[submodule "vim/bundle/psc-ide-vim"]
+	path = vim/bundle/psc-ide-vim
+	url = https://github.com/FrigoEU/psc-ide-vim
