@@ -21,7 +21,8 @@ if [ -f "$HOME/.bashrc.force" ]; then
         "$HOME/.cabal/bin"            \
         "$HOME/.npm-packages/bin"     \
         "$HOME/.psvm/current/bin"     \
-        "$HOME/.rbenv/bin"
+        "$HOME/.rbenv/bin"            \
+        "/opt/ghc/8.2.1/bin"
 
     if [ -f "$HOME/.profile.local" ]; then
         source "$HOME/.profile.local"
