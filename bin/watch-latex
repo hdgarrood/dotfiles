@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+file=$1
+
+while inotifywait "$file"
+do
+  sleep 0.5
+  pdflatex -halt-on-error "$file"
+done
