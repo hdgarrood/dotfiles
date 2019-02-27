@@ -36,6 +36,9 @@ if exists('&relativenumber')
   set relativenumber
 endif
 
+" No bells ever
+set belloff=all
+
 set hlsearch
 set incsearch
 set ignorecase
