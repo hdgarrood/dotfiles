@@ -16,13 +16,12 @@ if [ -f "$HOME/.bashrc.force" ]; then
     # Add paths which are common to all systems
     add_path --prepend                \
         "/usr/local/bin"              \
-        "$HOME/.bin"                  \
-        "$HOME/.local/bin"            \
         "$HOME/.cabal/bin"            \
         "$HOME/.npm-packages/bin"     \
-        "$HOME/.psvm/current/bin"     \
         "$HOME/.rbenv/bin"            \
-        "/opt/ghc/8.2.1/bin"
+        "/opt/ghc/8.2.1/bin"          \
+        "$HOME/.local/bin"            \
+        "$HOME/.bin"
 
     if [ -f "$HOME/.profile.local" ]; then
         source "$HOME/.profile.local"
