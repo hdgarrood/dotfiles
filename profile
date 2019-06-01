@@ -19,7 +19,7 @@ if [ -f "$HOME/.bashrc.force" ]; then
         "$HOME/.cabal/bin"            \
         "$HOME/.npm-packages/bin"     \
         "$HOME/.rbenv/bin"            \
-        "/opt/ghc/8.2.1/bin"          \
+        "/opt/ghc/bin"                \
         "$HOME/.local/bin"            \
         "$HOME/.bin"
 
