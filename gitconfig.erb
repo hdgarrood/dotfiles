@@ -24,6 +24,8 @@
     user = <%= DotfilesConfig['github_username'] %>
 [web]
     browser = chromium-browser
+[merge]
+    conflictstyle = diff3
 <% if (helper = DotfilesConfig['git_credential_helper']) %>
 [credential]
     helper = <%= helper %>
