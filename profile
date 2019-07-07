@@ -9,6 +9,7 @@
 
 export EDITOR=vim
 export PYTHONSTARTUP="$HOME/.python"
+export N_PREFIX="$HOME/.local"
 
 if [ -f "$HOME/.bashrc.force" ]; then
     source "$HOME/.bashrc.force"
