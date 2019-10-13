@@ -1,8 +1,10 @@
 set nocompatible
 
+" --- plugin configuration ---
 " don't use 'conceal' in Rust
 let g:no_rust_conceal=1
 
+" --- enable plugins ---
 silent! call pathogen#infect()
 syntax on
 filetype plugin indent on
