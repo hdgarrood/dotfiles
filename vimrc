@@ -3,6 +3,7 @@ set nocompatible
 " --- plugin configuration ---
 " don't use 'conceal' in Rust
 let g:no_rust_conceal=1
+let g:ale_linters = { 'haskell': ['stack_build'] }
 
 " --- enable plugins ---
 silent! call pathogen#infect()
