@@ -21,6 +21,7 @@ if [ -f "$HOME/.bashrc.force" ]; then
         "$HOME/.npm-packages/bin"     \
         "$HOME/.rbenv/bin"            \
         "/opt/ghc/bin"                \
+        "$HOME/.cargo/bin"            \
         "$HOME/.local/bin"            \
         "$HOME/.bin"
 
