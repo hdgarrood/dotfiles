@@ -18,6 +18,7 @@ if [ -f "$HOME/.bashrc.force" ]; then
     add_path --prepend                \
         "/usr/local/bin"              \
         "$HOME/.cabal/bin"            \
+        "$HOME/.ghcup/bin"            \
         "$HOME/.npm-packages/bin"     \
         "$HOME/.rbenv/bin"            \
         "/opt/ghc/bin"                \
