@@ -7,9 +7,6 @@
 [submodule "vim/bundle/vim-commentary"]
 	path = vim/bundle/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
-[submodule "vim/bundle/tabular"]
-	path = vim/bundle/tabular
-	url = git://github.com/godlygeek/tabular.git
 [submodule "vim/bundle/haskell_syntax"]
 	path = vim/bundle/haskell_syntax
 	url = https://github.com/urso/haskell_syntax.vim
