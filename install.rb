@@ -8,7 +8,7 @@ require 'fileutils'
 require 'rbconfig'
 
 def install_dotfiles
-  initialize_uninitialized_submodules
+  # initialize_uninitialized_submodules
   load_configuration
   copy_dotfiles
 end
