@@ -1,1 +1,3 @@
-setopt no_menu_complete
+setopt no_automenu
+setopt bash_auto_list
+setopt no_list_beep

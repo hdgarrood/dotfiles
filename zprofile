@@ -24,3 +24,7 @@ if command -v direnv >/dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
+# Activate local bins
+if [ -d "$HOME/.bin" ]; then
+    export PATH="$PATH:$HOME/.bin"
+fi
