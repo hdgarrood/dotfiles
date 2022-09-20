@@ -1,0 +1,1 @@
+setopt no_menu_complete
