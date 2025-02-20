@@ -5,6 +5,15 @@ for config_file in $(ls $HOME/.zsh); do
     source "$HOME/.zsh/$config_file"
 done
 
+if command -v nix-your-shell > /dev/null; then
+  nix-your-shell zsh | source /dev/stdin
+fi
+
+# Activate `direnv`: https://direnv.net/
+if command -v direnv >/dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
