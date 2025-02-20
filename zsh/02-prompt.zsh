@@ -7,5 +7,5 @@ GIT_PS1_SHOWUPSTREAM=auto
 # Allow command substitution
 setopt prompt_subst
 
-PS1="%F{cyan}%n%f@%F{yellow}%m%f: %F{green}%~\$(nix-shell-info)%f %F{5}\$(__git_ps1 \"(%s)\")%f
+PS1="%F{cyan}%n%f@%F{yellow}%m%f: %F{green}%~%f %F{blue}\$(nix-shell-info)%f %F{5}\$(__git_ps1 \"(%s)\")%f
 $ "

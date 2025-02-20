@@ -15,13 +15,14 @@ fi
 if [ -d "$HOME/.local/share/fnm" ]; then
     export PATH="$HOME/.local/share/fnm:$PATH"
 fi
+
 if command -v fnm >/dev/null; then
     eval "$(fnm env --use-on-cd)"
 fi
 
-# Activate `direnv`: https://direnv.net/
-if command -v direnv >/dev/null; then
-    eval "$(direnv hook zsh)"
+# Activate ghcup
+if [ -d "$HOME/.ghcup/bin" ]; then
+    export PATH="$PATH:$HOME/.ghcup/bin"
 fi
 
 # Activate local bins
