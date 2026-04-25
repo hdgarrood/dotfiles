@@ -6,3 +6,6 @@ email = "harry@garrood.me"
 
 [ui]
 default-command = "log"
+
+[aliases]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
