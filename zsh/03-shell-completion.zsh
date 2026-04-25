@@ -1,1 +1,4 @@
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+compinit
+
+source <(COMPLETE=zsh jj)
