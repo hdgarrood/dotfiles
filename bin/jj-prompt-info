@@ -1,0 +1,63 @@
+#! /usr/bin/env bash
+
+# NB: we use the same revset as 'tug' does here so that we can indicate what
+# 'tug' would do
+eval $(jj log --ignore-working-copy -n 1 --no-graph --color never \
+  -r "coalesce(heads(::@- & bookmarks()), root())" \
+  -T '
+    separate(" ",
+      "bookmark_id=" ++ change_id.shortest(),
+      "bookmarks=\"" ++ bookmarks.join(" ") ++ "\"",
+    )
+  ')
+
+eval $(jj log --ignore-working-copy -n 1 --no-graph --color never -r "@" \
+  -T '
+    separate(" ",
+      "change_id=" ++ change_id.shortest(),
+      "parent_id=" ++ parents.map(|c| c.change_id().shortest()).join("-"),
+      "has_modified=" ++ diff.stat().files().any(|f| f.status_char() == "M"),
+      "has_added=" ++ diff.stat().files().any(|f| f.status_char() == "A"),
+      "has_deleted=" ++ diff.stat().files().any(|f| f.status_char() == "D"),
+      "has_copied=" ++ diff.stat().files().any(|f| f.status_char() == "C"),
+      "has_renamed=" ++ diff.stat().files().any(|f| f.status_char() == "R"),
+      "conflict=" ++ conflict,
+    )')
+
+parts=()
+
+if [ -n "$bookmarks" ]; then
+  parts+=("$bookmarks")
+
+  if [ "$bookmark_id" != "$parent_id" ]; then
+    parts+=("--")
+  fi
+fi
+
+status=()
+
+if [ "$has_modified" = "true" ]; then
+  status+=(M)
+fi
+
+if [ "$has_added" = "true" ]; then
+  status+=(A)
+fi
+
+if [ "$has_deleted" = "true" ]; then
+  status+=(D)
+fi
+
+if [ "$has_copied" = "true" ]; then
+  status+=(C)
+fi
+
+if [ "$has_renamed" = "true" ]; then
+  status+=(R)
+fi
+
+parts+=($(printf "%s" "${status[@]}"))
+
+printf -v joined '%s|' "${parts[@]}"
+echo "${joined%|}"
+
