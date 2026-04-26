@@ -17,7 +17,6 @@ bookmark-advance-to = '@-'
 [revset-aliases]
 'most_recent_bookmark(x)' = 'heads(::x & bookmarks())'
 
-
 [aliases]
 prek = [
   "util",
@@ -27,5 +26,5 @@ prek = [
   "-c",
   "jj diff -r \"${1:-ancestors(@) ~ ancestors(trunk())}\" --name-only --no-pager | xargs prek run --files",
 ]
-push = [ "git", "push", "-r", "most_recent_bookmark(@-)" ]
+gp = [ "git", "push", "-r", "most_recent_bookmark(@-)" ]
 

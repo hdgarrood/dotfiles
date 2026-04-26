@@ -2,10 +2,10 @@
 
 git rev-parse --show-toplevel >/dev/null 2>/dev/null || exit
 
-# NB: we use the same revset as 'tug' does here so that we can indicate what
-# 'tug' would do
+# NB: we use the same revset as 'bookmark advance' / 'gpush' does here so that
+# we can indicate what those would do
 eval $(jj log -n 1 --no-graph --color never \
-  -r "coalesce(heads(::@- & bookmarks()), root())" \
+  -r "coalesce(most_recent_bookmark(@-), root())" \
   -T '
     separate(" ",
       "bookmark_id=" ++ change_id.shortest(),
@@ -18,7 +18,6 @@ eval $(jj log -n 1 --no-graph --color never \
 eval $(jj log --ignore-working-copy -n 1 --no-graph --color never -r "@" \
   -T '
     separate(" ",
-      "change_id=" ++ change_id.shortest(),
       "parent_id=" ++ parents.map(|c| c.change_id().shortest()).join("-"),
       "has_modified=" ++ diff.stat().files().any(|f| f.status_char() == "M"),
       "has_added=" ++ diff.stat().files().any(|f| f.status_char() == "A"),
