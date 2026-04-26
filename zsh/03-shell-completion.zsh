@@ -1,4 +1,4 @@
 autoload -Uz compinit
 compinit
 
-command -v jj && source <(COMPLETE=zsh jj)
+command -v jj >/dev/null && source <(COMPLETE=zsh jj)
