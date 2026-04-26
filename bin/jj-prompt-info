@@ -1,6 +1,13 @@
 #! /usr/bin/env bash
 
-git rev-parse --show-toplevel >/dev/null 2>/dev/null || exit
+toplevel=$(git rev-parse --show-toplevel 2>/dev/null)
+
+if [ -z "$toplevel" ]; then
+  exit
+elif [ ! -d "$toplevel/.jj" ]; then
+  printf "$1" "jj not initialized"
+  exit
+fi
 
 # NB: we use the same revset as 'bookmark advance' / 'gpush' does here so that
 # we can indicate what those would do
