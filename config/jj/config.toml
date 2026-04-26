@@ -4,8 +4,19 @@
 name = "Harry Garrood"
 email = "harry@garrood.me"
 
+[templates]
+git_push_bookmark = '"hdgarrood/push-" ++ change_id.short()'
+
 [ui]
 default-command = "log"
 
 [aliases]
+prek = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  "jj diff -r \"${1:-ancestors(@) ~ ancestors(trunk())}\" --name-only --no-pager | xargs prek run --files",
+]
 tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
