@@ -2,7 +2,7 @@
 
 # NB: we use the same revset as 'tug' does here so that we can indicate what
 # 'tug' would do
-eval $(jj log --ignore-working-copy -n 1 --no-graph --color never \
+eval $(jj log -n 1 --no-graph --color never \
   -r "coalesce(heads(::@- & bookmarks()), root())" \
   -T '
     separate(" ",
@@ -11,6 +11,8 @@ eval $(jj log --ignore-working-copy -n 1 --no-graph --color never \
     )
   ')
 
+# Pass --ignore-working-copy here as an optimization, because the previous
+# command will have snapshotted the working copy
 eval $(jj log --ignore-working-copy -n 1 --no-graph --color never -r "@" \
   -T '
     separate(" ",
@@ -27,10 +29,10 @@ eval $(jj log --ignore-working-copy -n 1 --no-graph --color never -r "@" \
 parts=()
 
 if [ -n "$bookmarks" ]; then
-  parts+=("$bookmarks")
-
   if [ "$bookmark_id" != "$parent_id" ]; then
-    parts+=("--")
+    parts+=("$bookmarks=")
+  else
+    parts+=("$bookmarks")
   fi
 fi
 
