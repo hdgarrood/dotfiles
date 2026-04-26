@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 
+git rev-parse --show-toplevel >/dev/null 2>/dev/null || exit
+
 # NB: we use the same revset as 'tug' does here so that we can indicate what
 # 'tug' would do
 eval $(jj log -n 1 --no-graph --color never \
@@ -52,6 +54,10 @@ fi
 
 parts+=($(printf "%s" "${status[@]}"))
 
+if [ "$conflict" = "true" ]; then
+  parts+=(❌)
+fi
+
 if [ -n "$bookmarks" ]; then
   if [ "$bookmark_id" = "$parent_id" ]; then
     parts+=("$bookmarks")
@@ -62,5 +68,5 @@ fi
 
 
 printf -v joined '%s|' "${parts[@]}"
-echo "${joined%|}"
+printf "$1" "${joined%|}"
 
