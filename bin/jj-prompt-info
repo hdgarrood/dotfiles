@@ -54,9 +54,9 @@ parts+=($(printf "%s" "${status[@]}"))
 
 if [ -n "$bookmarks" ]; then
   if [ "$bookmark_id" = "$parent_id" ]; then
-    parts+=("$bookmarks=")
-  else
     parts+=("$bookmarks")
+  else
+    parts+=("$bookmarks^")
   fi
 fi
 
