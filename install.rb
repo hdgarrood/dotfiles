@@ -6,6 +6,7 @@
 require 'erb'
 require 'fileutils'
 require 'rbconfig'
+require 'tempfile'
 
 def install_dotfiles
   # initialize_uninitialized_submodules
@@ -46,12 +47,12 @@ def copy_dotfiles
     next if fix_symlink_if_broken(file)
 
     if File.exists?(dotfile_path(file))
-      if dotfile_identical? file
+      if contents_identical?(file)
         count_identical += 1
       elsif replace_all
         symlink_dotfile(file)
       else
-        print "overwrite #{dotfile_path(file)}? [ynaq] "
+        print "update #{dotfile_path(file)}? [ynaq] "
         case $stdin.gets.chomp
         when 'a'
           replace_all = true
@@ -121,13 +122,23 @@ def dotfile_path(file)
   return File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
 end
 
-def dotfile_identical?(file)
+# returns true if identical. also prints a diff of what the update would do if
+# returning false
+def contents_identical?(file)
   dotfile = dotfile_path(file)
   return true if File.identical?(file, dotfile)
 
   new_file_contents = File.extname(file) == '.erb' ?
     erbify(file) : File.read(file)
-  return new_file_contents == File.read(dotfile)
+  return true if new_file_contents == File.read(dotfile)
+  
+  tmpfile = Tempfile.new(file)
+  tmpfile.write(new_file_contents)
+  tmpfile.close
+  system "git diff --no-index \"#{dotfile_path(file)}\" \"#{tmpfile.path}\""
+  # unlink explicitly to prevent it from being GC'd before we can prepare the diff
+  tmpfile.unlink 
+  false
 end
 
 # takes a file, returns erbed string
