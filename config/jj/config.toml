@@ -10,6 +10,14 @@ git_push_bookmark = '"hdgarrood/push-" ++ change_id.short()'
 [ui]
 default-command = "log"
 
+[revsets]
+bookmark-advance-from = 'most_recent_bookmark(to)'
+bookmark-advance-to = '@-'
+
+[revset-aliases]
+'most_recent_bookmark(x)' = 'heads(::x & bookmarks())'
+
+
 [aliases]
 prek = [
   "util",
@@ -19,4 +27,5 @@ prek = [
   "-c",
   "jj diff -r \"${1:-ancestors(@) ~ ancestors(trunk())}\" --name-only --no-pager | xargs prek run --files",
 ]
-tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
+push = [ "git", "push", "-b", "most_recent_bookmark(@-)" ]
+
