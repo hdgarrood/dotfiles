@@ -28,14 +28,6 @@ eval $(jj log --ignore-working-copy -n 1 --no-graph --color never -r "@" \
 
 parts=()
 
-if [ -n "$bookmarks" ]; then
-  if [ "$bookmark_id" != "$parent_id" ]; then
-    parts+=("$bookmarks=")
-  else
-    parts+=("$bookmarks")
-  fi
-fi
-
 status=()
 
 if [ "$has_modified" = "true" ]; then
@@ -59,6 +51,15 @@ if [ "$has_renamed" = "true" ]; then
 fi
 
 parts+=($(printf "%s" "${status[@]}"))
+
+if [ -n "$bookmarks" ]; then
+  if [ "$bookmark_id" = "$parent_id" ]; then
+    parts+=("$bookmarks=")
+  else
+    parts+=("$bookmarks")
+  fi
+fi
+
 
 printf -v joined '%s|' "${parts[@]}"
 echo "${joined%|}"
