@@ -70,8 +70,14 @@ if [ -n "$bookmarks" ]; then
   else
     parts+=("$bookmarks^")
   fi
+else
+  # If there's no bookmark, find the latest common ancestor of @- and trunk()
+  # and print how old it is
+  parts+=("[$(jj log --ignore-working-copy -n 1 --no-graph --color=never \
+    -r "fork_point(@- | trunk())" \
+    -T 'committer.timestamp().ago()'
+  )]")
 fi
-
 
 printf -v joined '%s|' "${parts[@]}"
 printf "$1" "${joined%|}"
