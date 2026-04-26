@@ -27,5 +27,5 @@ prek = [
   "-c",
   "jj diff -r \"${1:-ancestors(@) ~ ancestors(trunk())}\" --name-only --no-pager | xargs prek run --files",
 ]
-push = [ "git", "push", "-r", "'most_recent_bookmark(@-)'" ]
+push = [ "git", "push", "-r", "most_recent_bookmark(@-)" ]
 
