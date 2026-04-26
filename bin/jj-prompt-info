@@ -61,7 +61,7 @@ fi
 parts+=($(printf "%s" "${status[@]}"))
 
 if [ "$conflict" = "true" ]; then
-  parts+=(❌)
+  parts+=(×)
 fi
 
 if [ -n "$bookmarks" ]; then
