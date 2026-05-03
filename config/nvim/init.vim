@@ -32,3 +32,17 @@ nnoremap <leader><space> :ClearSearchPattern<cr>
 vnoremap <leader><space> :ClearSearchPattern<cr>
 
 command! KillWhitespace :normal :%s/\s\+$//g<cr> :ClearSearchPattern
+
+let data_dir = stdpath('data') . '/site'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+" Plugins
+call plug#begin()
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag' : '*' }
+
+call plug#end()
