@@ -8,6 +8,7 @@ set expandtab
 set shiftwidth=2
 set scrolloff=5
 set wildmode=list:longest
+set confirm
 colorscheme unokai
 
 " yanking/pasting to/from system clipboard
@@ -21,6 +22,10 @@ nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>p "+gP
 vnoremap <leader>p "+gP
+
+" tabs
+nnoremap <leader>t :tabnew<cr>
+vnoremap <leader>t :tabnew<cr>
 
 " Highlight trailing space
 match TrailingSpace /\s\+$/
@@ -44,5 +49,9 @@ call plug#begin()
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope.nvim', { 'tag' : '*' }
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
+
+lsp enable buck2
+lsp enable basedpyright
