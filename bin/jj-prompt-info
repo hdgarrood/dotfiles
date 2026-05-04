@@ -11,7 +11,7 @@ fi
 
 # NB: we use the same revset as 'bookmark advance' / 'gpush' does here so that
 # we can indicate what those would do
-eval $(jj log -n 1 --no-graph --color never \
+eval $(jj log --ignore-working-copy -n 1 --no-graph --color never \
   -r "coalesce(most_recent_bookmark(@-), root())" \
   -T '
     separate(" ",
