@@ -2,6 +2,7 @@
 set number
 set relativenumber
 set colorcolumn=80
+set cursorline
 set ignorecase
 set smartcase
 set expandtab
