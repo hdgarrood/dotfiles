@@ -51,8 +51,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope.nvim', { 'tag' : '*' }
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvimtools/none-ls.nvim'
 
 call plug#end()
 
 lsp enable buck2
-lsp enable basedpyright
+
+:lua require("null-ls").setup({ sources = { require("null-ls").builtins.formatting.treefmt } })
