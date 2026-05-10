@@ -5,3 +5,7 @@ if status --is-interactive
     buck2 completion fish | source
   end
 end
+
+if command -v nix-your-shell >/dev/null
+  nix-your-shell fish | source
+end
