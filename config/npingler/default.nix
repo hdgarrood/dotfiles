@@ -20,10 +20,13 @@ let
 
     paths = [
       pkgs.direnv
+      pkgs.fd
       pkgs.fish
+      pkgs.fnm
       pkgs.fzf
       pkgs.gh
       pkgs.git
+      pkgs.graphviz
       pkgs.jq
       pkgs.jujutsu
       pkgs.neovim
@@ -38,6 +41,7 @@ in
   npingler = {
     # By default, npingler uses the attr matching your hostname.
     sunbird = profile;
+    rook = profile;
   };
 }
 
