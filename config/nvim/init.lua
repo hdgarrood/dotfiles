@@ -51,7 +51,10 @@ vim.cmd('command! KillWhitespace :normal :%s/\\s\\+$//g<cr> :ClearSearchPattern'
 
 local data_dir = vim.fn.stdpath('data') .. '/site'
 if vim.fn.glob(data_dir .. '/autoload/plug.vim') == "" then
-  vim.cmd("silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'")
+  local curl = vim.system({
+    'curl', '-fLo', data_dir .. '/autoload/plug.vim', '--create-dirs', 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  })
+  curl:wait(10000)
 end
 
 -- Plugins
