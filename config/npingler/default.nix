@@ -32,6 +32,8 @@ let
       pkgs.neovim
       pkgs.nix-direnv
       pkgs.nix-your-shell
+      pkgs.npingler
+      pkgs.npins
       pkgs.ripgrep
       pkgs.watchman
     ];
