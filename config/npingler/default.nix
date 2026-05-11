@@ -1,21 +1,24 @@
 let
-  npins-sources = import ./npins;
-  pkgs = import npins-sources.nixpkgs {
+  sources = import ./npins;
+
+  pkgs = import sources.nixpkgs {
     overlays = [
       (final: prev: {
-        inherit npins-sources;
+        inherit sources;
 
-        npingler-lib = final.callPackage "${npins-sources.npingler}/lib" { };
+        npingler-lib = final.callPackage "${sources.npingler}/lib" { };
+
       })
     ];
   };
+
   profile = pkgs.npingler-lib.makeProfile {
     pins = {
       # A map of names to `source` derivations. These get pinned in the `nix
       # registry` so that (e.g.) `nix repl nixpkgs` uses the same version of
       # `nixpkgs` as your profile, and also in your Nix channels, so that
       # `nix-shell -p hello` uses the same version as well.
-      nixpkgs = npins-sources.nixpkgs;
+      nixpkgs = sources.nixpkgs;
     };
 
     paths = [
