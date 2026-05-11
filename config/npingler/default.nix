@@ -4,10 +4,10 @@ let
   pkgs = import sources.nixpkgs {
     overlays = [
       (final: prev: {
-        inherit sources;
-
         npingler-lib = final.callPackage "${sources.npingler}/lib" { };
-
+      })
+      (final: prev: {
+        hdgarrood = final.callPackage ./makePkgs.nix { };
       })
     ];
   };
@@ -33,7 +33,7 @@ let
       pkgs.jq
       pkgs.jujutsu
       pkgs.neovim
-      pkgs.nix-direnv
+      pkgs.hdgarrood.nix-direnv
       pkgs.nix-your-shell
       pkgs.npingler
       pkgs.npins
