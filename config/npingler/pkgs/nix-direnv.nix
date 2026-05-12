@@ -16,8 +16,8 @@ resholve.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "hdgarrood";
     repo = "nix-direnv";
-    rev = "e690ad897bb788f6e721191330cca4072e791f11";
-    hash = "sha256-3TymQtZy3IIBV06QLV7VKT0DDRe6yNpMBiVkkd4oT2w";
+    rev = "24dc97335d8150b3700cbc48ffb89f3386467571";
+    hash = "sha256-Xsrb6w7pRxIBnhjgDrz9jGJ38/BzQ2Q0T3GURIW8bdw=";
   };
 
   installPhase = ''
