@@ -150,7 +150,7 @@
   "Window Type" : 0,
   "BM Growl" : true,
   "Prompt Before Closing 2" : false,
-  "Command" : "",
+  "Command" : "\/Users\/harry\/.nix-profile\/bin\/fish",
   "Selected Text Color" : {
     "Red Component" : 0,
     "Color Space" : "sRGB",
@@ -212,7 +212,7 @@
     "Blue Component" : 0,
     "Red Component" : 0
   },
-  "Custom Command" : "No",
+  "Custom Command" : "Yes",
   "Background Color (Dark)" : {
     "Green Component" : 0,
     "Blue Component" : 0,
@@ -281,6 +281,7 @@
     "Green Component" : 0.35916060209274292
   },
   "Description" : "Default",
+  "Load Shell Integration Automatically" : true,
   "Ansi 7 Color (Dark)" : {
     "Green Component" : 0.73333334922790527,
     "Blue Component" : 0.73333334922790527,
@@ -294,7 +295,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.23660069704055786
   },
-  "Name" : "Default",
+  "Name" : "dotfiles-profile",
   "Transparency" : 0,
   "Horizontal Spacing" : 1,
   "Cursor Color (Dark)" : {
@@ -371,6 +372,7 @@
     "Blue Component" : 0.3333333432674408,
     "Red Component" : 1
   },
+  "Icon" : 1,
   "Bold Color (Light)" : {
     "Green Component" : 0,
     "Blue Component" : 0,
