@@ -33,6 +33,7 @@ let
       pkgs.jq
       pkgs.jujutsu
       pkgs.neovim
+      pkgs.numbat
       pkgs.hdgarrood.nix-direnv
       pkgs.nix-your-shell
       pkgs.npingler
