@@ -4,8 +4,8 @@
 name = "Harry Garrood"
 email = "harry@garrood.me"
 
-[fsmonitor]
-backend = "watchman"
+# [fsmonitor]
+# backend = "watchman"
 
 [templates]
 git_push_bookmark = '"hdgarrood/push-" ++ change_id.short()'
