@@ -36,6 +36,7 @@ let
       pkgs.numbat
       pkgs.hdgarrood.nix-direnv
       pkgs.nix-your-shell
+      pkgs.nixfmt
       pkgs.npingler
       pkgs.npins
       pkgs.ripgrep
