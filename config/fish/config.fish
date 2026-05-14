@@ -20,4 +20,9 @@ if status --is-interactive
   if command -v nix-your-shell >/dev/null
     nix-your-shell fish | source
   end
+
+  if command -v direnv >/dev/null
+    direnv hook fish | source
+  end
 end
+
