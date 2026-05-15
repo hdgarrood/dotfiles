@@ -87,7 +87,16 @@ def file_excluded?(file)
   return true if %w(install.rb .gitignore .gitmodules config.rb).include?(file)
   # ignore everything in '_extras/'
   return true if file.include?('_extras/')
+  return true if macos_only?(file) && !is_macos
   false
+end
+
+def macos_only?(file)
+  file.start_with?('Library')
+end
+
+def is_macos
+  RbConfig::CONFIG['host_os'].start_with?('darwin')
 end
 
 def symlink_dotfile(file)
@@ -119,7 +128,12 @@ def fix_symlink_if_broken(file)
 end
 
 def dotfile_path(file)
-  return File.join(ENV['HOME'], ".#{file.sub('.erb', '')}")
+  if file.start_with?('Library/')
+    leading_dot = ""
+  else
+    leading_dot = "."
+  end
+  return File.join(ENV['HOME'], "#{leading_dot}#{file.sub('.erb', '')}")
 end
 
 # returns true if identical. also prints a diff of what the update would do if
