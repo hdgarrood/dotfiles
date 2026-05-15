@@ -23,6 +23,7 @@ let
 
     paths = [
       pkgs.buck2 # for completions, mainly.
+      pkgs.eza
       pkgs.direnv
       pkgs.fd
       pkgs.fish

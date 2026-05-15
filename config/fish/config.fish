@@ -13,6 +13,9 @@ end
 if status --is-interactive
   fish_vi_key_bindings
 
+  abbr ls eza
+  abbr tree eza --tree
+
   # Nix-provided fish config is added to XDG_DATA_DIRS too late, after fish has
   # already sourced vendor config. This fixes that.
   #
