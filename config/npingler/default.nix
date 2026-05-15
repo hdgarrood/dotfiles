@@ -34,12 +34,13 @@ let
       pkgs.jq
       pkgs.jujutsu
       pkgs.neovim
-      pkgs.numbat
       pkgs.nix-your-shell
       pkgs.nixfmt
       pkgs.npingler
       pkgs.npins
+      pkgs.numbat
       pkgs.ripgrep
+      pkgs.ruby
       pkgs.watchman
 
       pkgs.hdgarrood.nix-direnv # for the "print at most 5 changed files" patch only
