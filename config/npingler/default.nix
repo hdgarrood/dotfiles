@@ -46,6 +46,10 @@ let
   };
 in
 {
+  debug = {
+    inherit sources pkgs;
+  };
+
   npingler = {
     # By default, npingler uses the attr matching your hostname.
     sunbird = profile;
