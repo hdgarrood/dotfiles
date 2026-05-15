@@ -45,6 +45,7 @@ let
 
       pkgs.hdgarrood.nix-direnv # for the "print at most 5 changed files" patch only
       pkgs.hdgarrood.jj-prompt-info
+      pkgs.hdgarrood.nix-prompt-info
     ];
   };
 in
