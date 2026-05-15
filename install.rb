@@ -26,7 +26,7 @@ def initialize_uninitialized_submodules
 end
 
 def load_configuration
-  create_config unless File.exists?('config.rb')
+  create_config unless File.exist?('config.rb')
   require './config'
   if !defined?(DotfilesConfig)
     $stderr.puts "config.rb should define DotfilesConfig"
@@ -46,7 +46,7 @@ def copy_dotfiles
 
     next if fix_symlink_if_broken(file)
 
-    if File.exists?(dotfile_path(file))
+    if File.exist?(dotfile_path(file))
       if contents_identical?(file)
         count_identical += 1
       elsif replace_all
@@ -101,7 +101,7 @@ end
 
 def symlink_dotfile(file)
   dest = dotfile_path(file)
-  File.delete(dest) if File.exists?(dest)
+  File.delete(dest) if File.exist?(dest)
   FileUtils.mkdir_p(File.dirname(dest)) unless File.directory? File.dirname(dest)
   if File.extname(file) == ".erb"
     File.open(dest, "w") { |f| f.write(erbify(file)) }
@@ -119,7 +119,7 @@ def make_symlink(src, dest)
 end
 
 def fix_symlink_if_broken(file)
-  if File.symlink?(dotfile_path(file)) && !File.exists?(dotfile_path(file))
+  if File.symlink?(dotfile_path(file)) && !File.exist?(dotfile_path(file))
     puts "fixing broken symlink: #{dotfile_path(file)}"
     File.delete(dotfile_path(file))
     symlink_dotfile(file)
