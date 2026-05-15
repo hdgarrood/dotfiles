@@ -1,9 +1,13 @@
 set --export EDITOR nvim
 
-# nb: nonexistent directories are ignored
-fish_add_path --global \
-  "/opt/homebrew/bin" \
-  "$HOME/.bin"
+# Add entries to PATH. Like fish_add_path, except that it won't put stuff in
+# front of the nix stuff from the parent shell if SHLVL > 1
+set --local my_paths /opt/homebrew/bin
+for my_path in $my_paths
+  if ! contains $my_path $PATH
+    fish_add_path --global $my_path
+  end
+end
 
 # Set up nix last, so that nix is at the front of the path
 if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
@@ -36,4 +40,3 @@ if status --is-interactive
     nix-your-shell fish | source
   end
 end
-
