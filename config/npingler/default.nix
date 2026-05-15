@@ -35,13 +35,15 @@ let
       pkgs.jujutsu
       pkgs.neovim
       pkgs.numbat
-      pkgs.hdgarrood.nix-direnv
       pkgs.nix-your-shell
       pkgs.nixfmt
       pkgs.npingler
       pkgs.npins
       pkgs.ripgrep
       pkgs.watchman
+
+      pkgs.hdgarrood.nix-direnv # for the "print at most 5 changed files" patch only
+      pkgs.hdgarrood.jj-prompt-info
     ];
   };
 in

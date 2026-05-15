@@ -5,24 +5,25 @@ toplevel=$(git rev-parse --show-toplevel 2>/dev/null)
 if [ -z "$toplevel" ]; then
   exit
 elif [ ! -d "$toplevel/.jj" ]; then
+  # shellcheck disable=SC2059
   printf "$1" "jj not initialized"
   exit
 fi
 
 # NB: we use the same revset as 'bookmark advance' / 'gpush' does here so that
 # we can indicate what those would do
-eval $(jj log --ignore-working-copy -n 1 --no-graph --color never \
+eval "$(jj log --ignore-working-copy -n 1 --no-graph --color never \
   -r "coalesce(most_recent_bookmark(@-), root())" \
   -T '
     separate(" ",
       "bookmark_id=" ++ change_id.shortest(),
       "bookmarks=\"" ++ bookmarks.join(" ") ++ "\"",
     )
-  ')
+  ')"
 
 # Pass --ignore-working-copy here as an optimization, because the previous
 # command will have snapshotted the working copy
-eval $(jj log --ignore-working-copy -n 1 --no-graph --color never -r "@" \
+eval "$(jj log --ignore-working-copy -n 1 --no-graph --color never -r "@" \
   -T '
     separate(" ",
       "parent_id=" ++ parents.map(|c| c.change_id().shortest()).join("-"),
@@ -32,40 +33,41 @@ eval $(jj log --ignore-working-copy -n 1 --no-graph --color never -r "@" \
       "has_copied=" ++ diff.stat().files().any(|f| f.status_char() == "C"),
       "has_renamed=" ++ diff.stat().files().any(|f| f.status_char() == "R"),
       "conflict=" ++ conflict,
-    )')
+    )')"
 
 parts=()
 
 status=()
 
-if [ "$has_modified" = "true" ]; then
+if [ "${has_modified:-}" = "true" ]; then
   status+=(M)
 fi
 
-if [ "$has_added" = "true" ]; then
+if [ "${has_added:-}" = "true" ]; then
   status+=(A)
 fi
 
-if [ "$has_deleted" = "true" ]; then
+if [ "${has_deleted:-}" = "true" ]; then
   status+=(D)
 fi
 
-if [ "$has_copied" = "true" ]; then
+if [ "${has_copied:-}" = "true" ]; then
   status+=(C)
 fi
 
-if [ "$has_renamed" = "true" ]; then
+if [ "${has_renamed:-}" = "true" ]; then
   status+=(R)
 fi
 
+# shellcheck disable=SC2207
 parts+=($(printf "%s" "${status[@]}"))
 
-if [ "$conflict" = "true" ]; then
+if [ "${conflict:-}" = "true" ]; then
   parts+=(×)
 fi
 
-if [ -n "$bookmarks" ]; then
-  if [ "$bookmark_id" = "$parent_id" ]; then
+if [ -n "${bookmarks:-}" ]; then
+  if [ "${bookmark_id:-}" = "${parent_id:-}" ]; then
     parts+=("$bookmarks")
   else
     parts+=("$bookmarks^")
@@ -80,5 +82,6 @@ else
 fi
 
 printf -v joined '%s|' "${parts[@]}"
+# shellcheck disable=SC2059
 printf "$1" "${joined%|}"
 
