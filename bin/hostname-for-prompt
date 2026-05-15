@@ -1,9 +1,0 @@
-#! /usr/bin/env bash
-
-{
-  if command -v scutil >/dev/null; then
-    scutil --get ComputerName
-  else
-    hostname
-  fi
-} | tr -d '\n'
