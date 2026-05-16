@@ -39,4 +39,9 @@ if status --is-interactive
   if command -v nix-your-shell >/dev/null
     nix-your-shell fish | source
   end
+
+  # This can't go in functions/*.fish because it wouldn't get loaded
+  function __jj_snapshot_for_prompt --on-event fish_prompt --desc "run a jj snapshot so that prompt info is up-to-date"
+    jj log -r 'none()' 2>/dev/null
+  end
 end
