@@ -10,7 +10,3 @@ if [ -d "/opt/homebrew/bin" ]; then
     export PATH="$PATH:/opt/homebrew/bin"
 fi
 
-# Activate local bins
-if [ -d "$HOME/.bin" ]; then
-    export PATH="$PATH:$HOME/.bin"
-fi
