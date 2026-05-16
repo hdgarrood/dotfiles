@@ -43,6 +43,7 @@ let
       pkgs.numbat
       pkgs.ripgrep
       pkgs.ruby
+      pkgs.terminal-notifier
       pkgs.watchman
 
       pkgs.hdgarrood.nix-direnv # for the "print at most 5 changed files" patch only
