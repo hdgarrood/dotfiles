@@ -10,7 +10,7 @@ let
       name = p.pname or p.name;
       value = {
         version = builtins.toString p.version or "0";
-        storePath = builtins.storePath p;
+        storePath = builtins.toString p;
       };
     }) paths
   );
