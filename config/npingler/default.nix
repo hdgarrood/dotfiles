@@ -5,7 +5,9 @@ let
     overlays = [
       (final: prev: {
         npingler-lib = final.callPackage "${sources.npingler}/lib" { };
-        hdgarrood = final.callPackage ./makePkgs.nix { };
+        hdgarrood = final.callPackage ./makePkgs.nix { } // {
+          makeManifest = final.callPackage ./makeManifest.nix { };
+        };
       })
     ];
   };
@@ -51,7 +53,12 @@ let
   ];
 
   profile = pkgs.npingler-lib.makeProfile {
-    inherit paths pins;
+    inherit pins;
+    paths =
+      let
+        manifest = pkgs.hdgarrood.makeManifest { inherit paths; };
+      in
+      paths ++ [ manifest ];
   };
 in
 {
@@ -61,16 +68,6 @@ in
     pins
     paths
     ;
-
-  summary = pkgs.lib.listToAttrs (
-    builtins.map (p: {
-      name = p.pname or p.name;
-      value = {
-        version = builtins.toString p.version or "0";
-        storePath = builtins.storePath p;
-      };
-    }) paths
-  );
 
   npingler = {
     # By default, npingler uses the attr matching your hostname.
