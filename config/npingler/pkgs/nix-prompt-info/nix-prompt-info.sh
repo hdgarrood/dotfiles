@@ -1,20 +1,17 @@
-# shellcheck shell=bash
-
-if [ "${IN_NIX_SHELL:-}" != "" ] || [ "${IN_NIX_RUN:-}" != "" ]; then
-  # We need to subtract one from SHLVL for this script itself
-  effective_shlvl=$((SHLVL - 1))
-  if [ "$effective_shlvl" -gt 2 ]; then
-    shlvl_str=":$effective_shlvl"
+if [ -n "${NIX_SHELL_LEVEL:-}" ]; then
+  direnv_status="$(direnv status --json | jq --raw-output '.state.loadedRC.allowed')"
+  if [ "${direnv_status:-}" = "0" ]; then
+    output="direnv"
+  elif [ -n "${name:-}" ]; then
+    output="$name"
   else
-    shlvl_str=""
+    output="${IN_NIX_SHELL:-unknown}"
   fi
 
-  if [ -n "${DIRENV_FILE:-}" ]; then
-    output="direnv"
-  elif [ "${name:-}" == "shell" ]; then
-    output="$IN_NIX_SHELL"
-  elif [ -n "${name:-}" ]; then
-    output="name"
+  if [ "$NIX_SHELL_LEVEL" -gt 1 ]; then
+    shlvl_str=":$NIX_SHELL_LEVEL"
+  else
+    shlvl_str=""
   fi
 
   printf "[%s]" "${output}${shlvl_str}"
