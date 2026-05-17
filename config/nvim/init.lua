@@ -15,12 +15,12 @@ vim.cmd('colorscheme flexoki')
 
 -- Make comments stand out by making them italic and brighter
 vim.api.nvim_set_hl(0, 'Comment', {fg = '#FFE7CE', italic = true})
-vim.api.nvim_set_hl(0, '@comment.documentation', {fg = '#FCC192'})
+vim.api.nvim_set_hl(0, '@comment.documentation', {fg = '#FCC192', italic = true})
 vim.api.nvim_set_hl(0, '@lsp.mod.documentation', {link = '@comment.documentation'})
 vim.api.nvim_set_hl(0, '@lsp.typemod.documentation', {link = '@comment.documentation'})
 
--- Delimiters and operators should be the same as normal text
-for _, hl_group in ipairs({'Delimiter', 'Operator', '@constructor.lua'}) do
+-- Delimiters, operators, and functions should be the same as normal text
+for _, hl_group in ipairs({'Delimiter', 'Operator', '@constructor.lua', 'Function'}) do
   vim.api.nvim_set_hl(0, hl_group, {})
 end
 
@@ -38,6 +38,8 @@ end
 
 -- Don't highlight builtins differently
 vim.api.nvim_set_hl(0, '@function.builtin', {})
+
+vim.api.nvim_set_hl(0, 'Special', {link = 'Constant'})
 
 -- yanking/pasting to/from system clipboard
 vim.keymap.set(
@@ -132,10 +134,18 @@ local tree_sitter_languages = {
   'yaml'
 }
 require('nvim-treesitter').install(tree_sitter_languages)
+-- filetypes which we want to enable highlighting for which already exist in
+-- tree_sitter_languages under a different name
+local tree_sitter_filetypes = {
+  'bzl',
+  'haskellpersistent',
+}
+vim.list_extend(tree_sitter_filetypes, tree_sitter_languages)
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = tree_sitter_languages,
+  pattern = tree_sitter_filetypes,
   callback = function() vim.treesitter.start() end,
 })
+
 -- Open help vertically by default
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'help' },
