@@ -68,6 +68,7 @@ Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 Plug('nvim-telescope/telescope.nvim', { tag = '*' })
 Plug('neovim/nvim-lspconfig')
 Plug('nvimtools/none-ls.nvim')
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 vim.call('plug#end')
 
 vim.cmd('lsp enable buck2')
@@ -90,4 +91,23 @@ null_ls.setup({
             })
         end
     end,
+})
+
+-- tree-sitter highlighting
+local tree_sitter_languages = {
+  'haskell',
+  'haskell_persistent',
+  'json',
+  'nix',
+  'python',
+  'ruby',
+  'rust',
+  'starlark',
+  'toml',
+  'yaml'
+}
+require('nvim-treesitter').install(tree_sitter_languages)
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = tree_sitter_languages,
+  callback = function() vim.treesitter.start() end,
 })

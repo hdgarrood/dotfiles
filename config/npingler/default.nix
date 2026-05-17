@@ -24,8 +24,8 @@ let
   paths = [
     pkgs.buck2 # for completions, mainly.
     pkgs.coreutils
-    pkgs.eza
     pkgs.direnv
+    pkgs.eza
     pkgs.fd
     pkgs.fish
     pkgs.fnm
@@ -44,6 +44,7 @@ let
     pkgs.ripgrep
     pkgs.ruby
     pkgs.terminal-notifier
+    pkgs.tree-sitter # for nvim
     pkgs.treefmt
     pkgs.watchman
 
