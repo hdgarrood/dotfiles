@@ -10,10 +10,25 @@ vim.opt.scrolloff=5
 vim.opt.wildmode = 'list:longest'
 vim.opt.confirm = true
 
+-- Syntax highlighting
 vim.cmd('colorscheme flexoki')
 
--- Make comments italic + stand out more
-vim.cmd('highlight Comment gui=italic')
+-- Make comments stand out by making them italic and brighter
+vim.api.nvim_set_hl(0, 'Comment', {fg = '#FFE7CE', italic = true})
+vim.api.nvim_set_hl(0, '@comment.documentation', {fg = '#FCC192'})
+vim.api.nvim_set_hl(0, '@lsp.mod.documentation', {link = '@comment.documentation'})
+vim.api.nvim_set_hl(0, '@lsp.typemod.documentation', {link = '@comment.documentation'})
+-- Different highlighting for different literals is bonkers
+vim.api.nvim_set_hl(0, 'Character', {link = 'String'})
+vim.api.nvim_set_hl(0, 'Number', {link = 'String'})
+vim.api.nvim_set_hl(0, 'Boolean', {link = 'String'})
+vim.api.nvim_set_hl(0, 'Float', {link = 'String'})
+-- Different highlighting for different keywords is also bonkers
+vim.api.nvim_set_hl(0, 'Conditional', {link = 'Keyword'})
+vim.api.nvim_set_hl(0, 'Repeat', {link = 'Keyword'})
+vim.api.nvim_set_hl(0, 'Label', {link = 'Keyword'})
+vim.api.nvim_set_hl(0, 'Exception', {link = 'Keyword'})
+vim.api.nvim_set_hl(0, 'Conditional', {link = 'Keyword'})
 
 -- yanking/pasting to/from system clipboard
 vim.keymap.set(
