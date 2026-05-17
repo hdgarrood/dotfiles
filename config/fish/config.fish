@@ -48,18 +48,20 @@ if status --is-interactive
     jj log -r 'none()' 2>/dev/null
   end
 
-  # 1 minute by default
-  set --global notify_slow_command_threshold_ms 60000
+  # Notify me when a command that took longer than 30s finishes
+  set --global notify_slow_command_threshold_ms 30000
 
   function __notify_slow_command_finished --on-event fish_postexec --desc "send a notification when long-running commands finish"
     set --local cmd_status $status
     if test "$CMD_DURATION" -gt "$notify_slow_command_threshold_ms"
-      set --local title "$(string split --fields 1 ' ' "$argv") finished in $(ms_to_human $CMD_DURATION)"
-      set --local subtitle
-      if test $cmd_status -ne 0
-        set subtitle "exit status: $cmd_status"
+      set --local title (string split --fields 1 ' ' "$argv")
+      if test $cmd_status -eq 0
+        set --append title "succeeded in"
+      else
+        set --append title "failed ($cmd_status) in"
       end
-      echo "command: $argv" | terminal-notifier -title "$title" -subtitle "$subtitle"
+      set --append title (ms_to_human $CMD_DURATION)
+      harry-notify "command: $argv" "$title"
     end
   end
 end

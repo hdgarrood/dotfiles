@@ -39,7 +39,11 @@ end
 -- Don't highlight builtins differently
 vim.api.nvim_set_hl(0, '@function.builtin', {})
 
+-- Make 'Special' stand out
 vim.api.nvim_set_hl(0, 'Special', {link = 'Constant'})
+
+-- Highlight variables in fish
+vim.api.nvim_set_hl(0, 'fishVariable', {link='Constant'})
 
 -- yanking/pasting to/from system clipboard
 vim.keymap.set(
