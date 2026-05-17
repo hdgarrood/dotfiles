@@ -87,6 +87,7 @@ Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 vim.call('plug#end')
 
 vim.cmd('lsp enable buck2')
+vim.cmd('lsp enable rust_analyzer')
 
 -- Set up none-ls / null-ls to format on save with treefmt (if it exists)
 local null_ls = require("null-ls")
