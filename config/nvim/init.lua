@@ -127,3 +127,8 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = tree_sitter_languages,
   callback = function() vim.treesitter.start() end,
 })
+-- Open help vertically by default
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'help' },
+  callback = function() vim.cmd('wincmd L') end,
+})
