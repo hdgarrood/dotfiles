@@ -10,7 +10,10 @@ vim.opt.scrolloff=5
 vim.opt.wildmode = 'list:longest'
 vim.opt.confirm = true
 
-vim.cmd('colorscheme unokai')
+vim.cmd('colorscheme flexoki')
+
+-- Make comments italic + stand out more
+vim.cmd('highlight Comment gui=italic')
 
 -- yanking/pasting to/from system clipboard
 vim.keymap.set(
