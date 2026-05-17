@@ -1,4 +1,6 @@
 set --export EDITOR nvim
+# less: use colours
+set --export LESS R
 
 # Add entries to PATH. Like fish_add_path, except that it won't put stuff in
 # front of the nix stuff from the parent shell if SHLVL > 1
