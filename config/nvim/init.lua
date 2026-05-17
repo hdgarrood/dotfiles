@@ -10,7 +10,7 @@ vim.opt.scrolloff=5
 vim.opt.wildmode = 'list:longest'
 vim.opt.confirm = true
 
--- Syntax highlighting
+-- Syntax highlighting.
 vim.cmd('colorscheme flexoki')
 
 -- Make comments stand out by making them italic and brighter
@@ -18,17 +18,26 @@ vim.api.nvim_set_hl(0, 'Comment', {fg = '#FFE7CE', italic = true})
 vim.api.nvim_set_hl(0, '@comment.documentation', {fg = '#FCC192'})
 vim.api.nvim_set_hl(0, '@lsp.mod.documentation', {link = '@comment.documentation'})
 vim.api.nvim_set_hl(0, '@lsp.typemod.documentation', {link = '@comment.documentation'})
--- Different highlighting for different literals is bonkers
-vim.api.nvim_set_hl(0, 'Character', {link = 'String'})
-vim.api.nvim_set_hl(0, 'Number', {link = 'String'})
-vim.api.nvim_set_hl(0, 'Boolean', {link = 'String'})
-vim.api.nvim_set_hl(0, 'Float', {link = 'String'})
+
+-- Delimiters and operators should be the same as normal text
+for _, hl_group in ipairs({'Delimiter', 'Operator', '@constructor.lua'}) do
+  vim.api.nvim_set_hl(0, hl_group, {})
+end
+
+-- Different highlighting for different types of literals is bonkers
+for _, hl_group in ipairs({'Character', 'Number', 'Float', 'Boolean'}) do
+  vim.api.nvim_set_hl(0, hl_group, {link = 'String'})
+end
+
+-- keywords don't need a different colour, just make them bold.
 -- Different highlighting for different keywords is also bonkers
-vim.api.nvim_set_hl(0, 'Conditional', {link = 'Keyword'})
-vim.api.nvim_set_hl(0, 'Repeat', {link = 'Keyword'})
-vim.api.nvim_set_hl(0, 'Label', {link = 'Keyword'})
-vim.api.nvim_set_hl(0, 'Exception', {link = 'Keyword'})
-vim.api.nvim_set_hl(0, 'Conditional', {link = 'Keyword'})
+vim.api.nvim_set_hl(0, 'Keyword', {bold = true})
+for _, hl_group in ipairs({'Conditional', 'Repeat', 'Label', 'Exception', 'Conditional'}) do
+  vim.api.nvim_set_hl(0, hl_group, {link = 'Keyword'})
+end
+
+-- Don't highlight builtins differently
+vim.api.nvim_set_hl(0, '@function.builtin', {})
 
 -- yanking/pasting to/from system clipboard
 vim.keymap.set(
