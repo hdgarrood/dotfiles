@@ -19,8 +19,8 @@ vim.api.nvim_set_hl(0, '@comment.documentation', {fg = '#FCC192', italic = true}
 vim.api.nvim_set_hl(0, '@lsp.mod.documentation', {link = '@comment.documentation'})
 vim.api.nvim_set_hl(0, '@lsp.typemod.documentation', {link = '@comment.documentation'})
 
--- Delimiters, operators, and functions should be the same as normal text
-for _, hl_group in ipairs({'Delimiter', 'Operator', '@constructor.lua', 'Function'}) do
+-- Delimiters and functions should be the same as normal text
+for _, hl_group in ipairs({'Delimiter', '@constructor.lua', 'Function'}) do
   vim.api.nvim_set_hl(0, hl_group, {})
 end
 
@@ -29,9 +29,10 @@ for _, hl_group in ipairs({'Character', 'Number', 'Float', 'Boolean'}) do
   vim.api.nvim_set_hl(0, hl_group, {link = 'String'})
 end
 
--- keywords don't need a different colour, just make them bold.
+-- keywords and operators don't need a different colour, just make them bold.
 -- Different highlighting for different keywords is also bonkers
 vim.api.nvim_set_hl(0, 'Keyword', {bold = true})
+vim.api.nvim_set_hl(0, 'Operator', {bold = true})
 for _, hl_group in ipairs({'Conditional', 'Repeat', 'Label', 'Exception', 'Conditional'}) do
   vim.api.nvim_set_hl(0, hl_group, {link = 'Keyword'})
 end
