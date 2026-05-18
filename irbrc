@@ -1,10 +1,9 @@
 #!/usr/bin/ruby
 require 'irb/completion'
-require 'irb/ext/save-history'
 
 IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "~/.irb_history"
-IRB.conf[:PROMPT_MODE] = :SIMPLE 
+IRB.conf[:PROMPT_MODE] = :SIMPLE
 
 class Object
   # list methods which aren't in superclass
