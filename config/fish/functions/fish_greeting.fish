@@ -12,7 +12,7 @@ function fish_greeting
       | sed 1d \
       | read --tokenize size used pcent
     set pcent (string replace '%' '' $pcent)
-    if test "$pcent" -gt 20
+    if test "$pcent" -gt 80
       echo
       echo "The file system containing the Nix store is getting full!"
       echo -s "Used: " (set_color cyan) $used (set_color normal) " / " (set_color cyan) "$size" (set_color normal) " (" (set_color cyan) "$pcent%" (set_color normal) ")"
