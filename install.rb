@@ -149,7 +149,7 @@ def contents_identical?(file)
   tmpfile = Tempfile.new(file)
   tmpfile.write(new_file_contents)
   tmpfile.close
-  system "git diff --no-index \"#{dotfile_path(file)}\" \"#{tmpfile.path}\""
+  system "git --no-pager diff --no-index \"#{dotfile_path(file)}\" \"#{tmpfile.path}\""
   # unlink explicitly to prevent it from being GC'd before we can prepare the diff
   tmpfile.unlink 
   false
