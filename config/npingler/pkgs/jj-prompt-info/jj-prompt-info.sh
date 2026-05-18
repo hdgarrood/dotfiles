@@ -1,12 +1,9 @@
 #! /usr/bin/env bash
 
-toplevel=$(git rev-parse --show-toplevel 2>/dev/null)
+toplevel="$(git rev-parse --show-toplevel 2>/dev/null)" || exit
 
-if [ -z "$toplevel" ]; then
-  exit
-elif [ ! -d "$toplevel/.jj" ]; then
-  # shellcheck disable=SC2059
-  printf "$1" "jj not initialized"
+if [ ! -d "$toplevel/.jj" ]; then
+  echo -n "(jj not initialized)"
   exit
 fi
 
@@ -59,8 +56,9 @@ if [ "${has_renamed:-}" = "true" ]; then
   status+=(R)
 fi
 
-# shellcheck disable=SC2207
-parts+=($(printf "%s" "${status[@]}"))
+if [ "${#status[@]}" -gt 0 ]; then
+  parts+=("$(printf "%s" "${status[@]}")")
+fi
 
 if [ "${conflict:-}" = "true" ]; then
   parts+=(×)
@@ -82,6 +80,5 @@ else
 fi
 
 printf -v joined '%s|' "${parts[@]}"
-# shellcheck disable=SC2059
-printf "$1" "${joined%|}"
+echo -n "(${joined%|})"
 

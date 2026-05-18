@@ -22,6 +22,7 @@ let
 
   # Packages to be added to your profile.
   paths = [
+    pkgs.bat
     pkgs.buck2 # for completions, mainly.
     pkgs.coreutils
     pkgs.direnv
