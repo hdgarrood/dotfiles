@@ -10,7 +10,6 @@ require 'tempfile'
 
 def install_dotfiles
   # initialize_uninitialized_submodules
-  load_configuration
   copy_dotfiles
 end
 
@@ -22,16 +21,6 @@ def initialize_uninitialized_submodules
       system "git submodule update --init"
       return
     end
-  end
-end
-
-def load_configuration
-  create_config unless File.exist?('config.rb')
-  require './config'
-  if !defined?(DotfilesConfig)
-    $stderr.puts "config.rb should define DotfilesConfig"
-    $stderr.puts "try deleting it, and redo `./install.rb` to create it automatically"
-    exit 1
   end
 end
 
@@ -158,36 +147,6 @@ end
 # takes a file, returns erbed string
 def erbify(file)
   ERB.new(File.read(file)).result(binding)
-end
-
-# walks you through creating your config.rb
-def create_config
-  keys = get_config_keys
-  config = {}
-
-  puts "no config.rb found -- creating..."
-  keys.each do |key|
-    puts "what's your #{key.gsub('_', ' ')}?"
-    val = $stdin.gets.chomp
-    config[key] = val
-  end
-
-  File.open('config.rb', 'w') { |f| f.puts "DotfilesConfig=#{pp_hash(config)}" }
-end
-
-def get_config_keys
-  keys = []
-  Dir.glob('**/*.erb').each do |f|
-    keys += File.read(f).scan(/\<%= DotfilesConfig\['(.*?)'\] %\>/).map(&:first)
-  end
-  keys
-end
-
-# pretty-prints a hash, assuming no nesting
-def pp_hash(hash)
-  str = "{\n  "
-  str << hash.map { |k, v| "'#{k}' => '#{v}'" }.join(",\n  ")
-  str << "\n}\n"
 end
 
 def ensure_in_root!

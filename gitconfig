@@ -1,6 +1,8 @@
 [user]
-    name = <%= DotfilesConfig['git_username'] %>
-    email = <%= DotfilesConfig['git_email'] %>
+    name = Harry Garrood
+    email = harry@garrood.me
+[github]
+    user = hdgarrood
 [alias]
     co = checkout
     st = status
@@ -19,16 +21,10 @@
     default = current
 [format]
     pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
-[github]
-    user = <%= DotfilesConfig['github_username'] %>
 [web]
     browser = chromium-browser
 [merge]
     conflictstyle = diff3
-<% if (helper = DotfilesConfig['git_credential_helper']) %>
-[credential]
-    helper = <%= helper %>
-<% end %>
 [init]
   defaultBranch = main
 [rerere]

@@ -4,6 +4,12 @@
 name = "Harry Garrood"
 email = "harry@garrood.me"
 
+# override user.email if the repository is located under ~/mercury
+[[--scope]]
+--when.repositories = ["~/mercury"]
+[--scope.user]
+email = "harry@mercury.com"
+
 # [fsmonitor]
 # backend = "watchman"
 
