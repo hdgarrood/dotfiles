@@ -527,7 +527,8 @@
       "Vertical Spacing": 1,
       "Visual Bell": true,
       "Window Type": 0,
-      "Working Directory": "/Users/harry"
+      "Working Directory": "/Users/harry",
+      "Show Mark Indicators": false
     }
   ]
 }
