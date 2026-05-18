@@ -32,7 +32,7 @@ function fish_prompt --description 'Write out the prompt'
       set -f duration_string (printf '[%s]' (ms_to_human $last_cmd_duration))
     end
 
-    echo $prompt_status $duration_string
+    echo -s $prompt_status' ' (set_color --italics) $duration_string (set_color normal)
     echo -s (prompt_login)' ' \
       (set_color $color_cwd) (prompt_pwd) $normal \
       (set_color blue) ' '(nix-prompt-info) $normal \
