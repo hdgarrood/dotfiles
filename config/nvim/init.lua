@@ -19,6 +19,10 @@ vim.api.nvim_set_hl(0, '@comment.documentation', {fg = '#FCC192', italic = true}
 vim.api.nvim_set_hl(0, '@lsp.mod.documentation', {link = '@comment.documentation'})
 vim.api.nvim_set_hl(0, '@lsp.typemod.documentation', {link = '@comment.documentation'})
 
+-- Make visual selections more visible (without this, visual selection looks
+-- too much like CursorLine)
+vim.api.nvim_set_hl(0, 'Visual', {link = 'CurSearch'})
+
 -- Delimiters and functions should be the same as normal text
 for _, hl_group in ipairs({'Delimiter', '@constructor.lua', 'Function'}) do
   vim.api.nvim_set_hl(0, hl_group, {})

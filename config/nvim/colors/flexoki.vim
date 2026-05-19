@@ -100,6 +100,7 @@ let s:variants.dark.or     = s:base.flexoki_orange_400
 let s:variants.dark.or_2   = s:base.flexoki_orange_600
 let s:variants.dark.ye     = s:base.flexoki_yellow_400
 let s:variants.dark.ye_2   = s:base.flexoki_yellow_600
+let s:variants.dark.ye_3   = s:base.flexoki_yellow_900
 let s:variants.dark.gr     = s:base.flexoki_green_400
 let s:variants.dark.gr_2   = s:base.flexoki_green_600
 let s:variants.dark.cy     = s:base.flexoki_cyan_400
@@ -146,8 +147,8 @@ call s:Hi('SpellLocal', {'fg': s:variants.dark.gr,   'bg':'NONE', 'style':'under
 call s:Hi('SpellRare',  {'fg': s:variants.dark.pu,   'bg':'NONE', 'style':'underline'})
 
 " Search / Diff
-call s:Hi('Search',       {'fg': s:variants.dark.tx, 'bg': s:variants.dark.ye})
-call s:Hi('IncSearch',    {'fg': s:variants.dark.tx, 'bg': s:variants.dark.ye})
+call s:Hi('Search',       {'fg': s:variants.dark.tx, 'bg': s:variants.dark.ye_3})
+call s:Hi('IncSearch',    {'fg': s:variants.dark.tx, 'bg': s:variants.dark.ye_3})
 call s:Hi('CurSearch',    {'fg': s:variants.dark.tx, 'bg': s:variants.dark.ye_2})
 call s:Hi('Substitute',   {'fg': s:variants.dark.tx, 'bg': s:variants.dark.gr})
 
