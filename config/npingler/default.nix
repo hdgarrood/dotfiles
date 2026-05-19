@@ -49,7 +49,6 @@ let
     pkgs.watchman
 
     pkgs.hdgarrood.nix-direnv # for the "print at most 5 changed files" patch only
-    pkgs.hdgarrood.harry-notify
     pkgs.hdgarrood.jj-prompt-info
     pkgs.hdgarrood.nix-prompt-info
   ];

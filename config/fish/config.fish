@@ -44,26 +44,9 @@ if status --is-interactive
     nix-your-shell fish | source
   end
 
-  # These have to go here rather than in functions/*.fish because they wouldn't
+  # This has to go here rather than in functions/*.fish because it wouldn't
   # get autoloaded there
   function __jj_snapshot_for_prompt --on-event fish_prompt --desc "run a jj snapshot so that prompt info is up-to-date"
     jj log -r 'none()' 2>/dev/null
-  end
-
-  # Notify me when a command that took longer than 30s finishes
-  set --global notify_slow_command_threshold_ms 30000
-
-  function __notify_slow_command_finished --on-event fish_postexec --desc "send a notification when long-running commands finish"
-    set --local cmd_status $status
-    if test "$CMD_DURATION" -gt "$notify_slow_command_threshold_ms"
-      set --local title (string split --fields 1 ' ' "$argv")
-      if test $cmd_status -eq 0
-        set --append title "succeeded in"
-      else
-        set --append title "failed ($cmd_status) in"
-      end
-      set --append title (ms_to_human $CMD_DURATION)
-      harry-notify "command: $argv" "$title"
-    end
   end
 end
