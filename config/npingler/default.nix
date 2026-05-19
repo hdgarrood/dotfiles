@@ -44,7 +44,6 @@ let
     pkgs.numbat
     pkgs.ripgrep
     pkgs.ruby
-    pkgs.terminal-notifier
     pkgs.tree-sitter # for nvim
     pkgs.treefmt
     pkgs.watchman
