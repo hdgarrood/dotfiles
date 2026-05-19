@@ -3,8 +3,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre994919.b3da656039dc/nixexprs.tar.xz",
-      "hash": "sha256-lMg7Dj7kyGN5cj9RGag5Is100HnQPKM9zEsuAOL2TLA="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre998534.d233902339c0/nixexprs.tar.xz",
+      "hash": "sha256-vZOcDniDPc1cS8A4Xi5YE6AGyPIvEpy4GMyayA3SWIM="
     },
     "npingler": {
       "type": "Git",
@@ -15,9 +15,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "6f6720eb822827977f388da3c8a09dd5d928c482",
-      "url": "https://github.com/9999years/npingler/archive/6f6720eb822827977f388da3c8a09dd5d928c482.tar.gz",
-      "hash": "sha256-aVeNeQv0vPgCZIBwxCNQGIyQ0/lmzpM+koDJBVFVF3Y="
+      "revision": "1fd7d6fe7579e1cc93f43ba47c1785658fd66597",
+      "url": "https://github.com/9999years/npingler/archive/1fd7d6fe7579e1cc93f43ba47c1785658fd66597.tar.gz",
+      "hash": "sha256-kDgWFcOw4F4h6jjnteXoqypCd9YqM4IoewPRHsuFN1o="
     }
   },
   "version": 7
