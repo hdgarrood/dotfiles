@@ -44,9 +44,34 @@ if status --is-interactive
     nix-your-shell fish | source
   end
 
-  # This has to go here rather than in functions/*.fish because it wouldn't
+  # These have to go here rather than in functions/*.fish because they wouldn't
   # get autoloaded there
   function __jj_snapshot_for_prompt --on-event fish_prompt --desc "run a jj snapshot so that prompt info is up-to-date"
     jj log -r 'none()' 2>/dev/null
+  end
+
+  # Notify me when a command that took longer than 5s finishes
+  # Note! we use a custom impl rather than just vendoring done.fish because this
+  # way we can let wezterm take responsibility for choosing whether to deliver
+  # the notification. Importantly, wezterm is able to suppress notifications
+  # which are generated from the currently focused pane (tab), via
+  #
+  #     config.notification_handling = "SuppressFromFocusedPane"
+  #
+  # and done.fish can't do this.
+  set --global notify_slow_command_threshold_ms 5000
+
+  function __notify_slow_command_finished --on-event fish_postexec --desc "send a notification when long-running commands finish"
+    set --local cmd_status $status
+    if test "$CMD_DURATION" -gt "$notify_slow_command_threshold_ms"
+      set --local title (string split --fields 1 ' ' "$argv")
+      if test $cmd_status -eq 0
+        set --append title "succeeded in"
+      else
+        set --append title "failed ($cmd_status) in"
+      end
+      set --append title (ms_to_human $CMD_DURATION)
+      wezterm_notify "$title" "$PWD: $argv"
+    end
   end
 end
