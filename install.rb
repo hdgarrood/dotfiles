@@ -73,7 +73,7 @@ def file_excluded?(file)
   # ignore directories
   return true if File.directory?(file)
   # ignore these specific files
-  return true if %w(install.rb .gitignore .gitmodules config.rb).include?(file)
+  return true if %w(README.md install.rb .gitignore .gitmodules config.rb).include?(file)
   # ignore everything in '_extras/'
   return true if file.include?('_extras/')
   return true if macos_only?(file) && !is_macos
