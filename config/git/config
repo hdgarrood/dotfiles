@@ -13,7 +13,7 @@
     status = auto
     branch = auto
 [core]
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.config/git/ignore
     autocrlf = input
 [pull]
     rebase = true

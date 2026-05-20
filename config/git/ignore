@@ -1,19 +1,15 @@
 .DS_Store
 
-# vim swap files
+# Editors
+.vscode
 .*.swp
 .swp
 .swo
-
-# emacs
 \#*\#
 .\#*
 
 # libreoffice lock files
 .~lock*#
-
-# subgit
-.subgit
 
 # python bytecode
 __pycache__
@@ -22,12 +18,7 @@ __pycache__
 # haskell things
 *.hi
 *.o
-.cabal-sandbox/
-cabal.sandbox.config
-*.elmi
-*.elmo
+.stack-work/
 
 # npm
 npm-debug.log
-.stack-work/
-.vscode
