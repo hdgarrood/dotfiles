@@ -30,3 +30,6 @@
 [rerere]
   enabled = true
   autoUpdate = true
+
+[include]
+  path = config.local
