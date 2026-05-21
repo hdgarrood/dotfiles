@@ -134,13 +134,13 @@ def contents_identical?(file)
   new_file_contents = File.extname(file) == '.erb' ?
     erbify(file) : File.read(file)
   return true if new_file_contents == File.read(dotfile)
-  
+
   tmpfile = Tempfile.new(file)
   tmpfile.write(new_file_contents)
   tmpfile.close
   system "git --no-pager diff --no-index \"#{dotfile_path(file)}\" \"#{tmpfile.path}\""
   # unlink explicitly to prevent it from being GC'd before we can prepare the diff
-  tmpfile.unlink 
+  tmpfile.unlink
   false
 end
 

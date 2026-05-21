@@ -23,6 +23,7 @@ if status --is-interactive
 
   abbr ls eza
   abbr tree eza --tree
+  abbr gdiff git diff --no-index --
 
   # Nix-provided fish config is added to XDG_DATA_DIRS too late, after fish has
   # already sourced vendor config. This fixes that.
