@@ -35,7 +35,7 @@ function fish_prompt --description 'Write out the prompt'
     echo -s $prompt_status' ' (set_color --italics) $duration_string (set_color normal)
     echo -s (prompt_login)' ' \
       (set_color $color_cwd) (prompt_pwd) $normal \
-      (set_color blue) ' '(nix-prompt-info) $normal \
-      (set_color purple) ' '(jj-prompt-info) $normal
+      (set_color blue) ' '(~/.nix-profile/bin/nix-prompt-info) $normal \
+      (set_color purple) ' '(~/.nix-profile/bin/jj-prompt-info) $normal
     echo -s -n $suffix' '
 end
