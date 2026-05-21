@@ -3,8 +3,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre998534.d233902339c0/nixexprs.tar.xz",
-      "hash": "sha256-vZOcDniDPc1cS8A4Xi5YE6AGyPIvEpy4GMyayA3SWIM="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre1001117.d99b013d5d19/nixexprs.tar.xz",
+      "hash": "sha256-AyKVLJihBA4molWFBpbk2+ruMFlkL1ONA8eNShZithw="
     },
     "npingler": {
       "type": "Git",

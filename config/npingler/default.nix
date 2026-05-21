@@ -39,6 +39,7 @@ let
     pkgs.neovim
     pkgs.nix-your-shell
     pkgs.nixfmt
+    pkgs.nix-direnv
     pkgs.npingler
     pkgs.npins
     pkgs.numbat
@@ -48,7 +49,6 @@ let
     pkgs.treefmt
     pkgs.watchman
 
-    pkgs.hdgarrood.nix-direnv # for the "print at most 5 changed files" patch only
     pkgs.hdgarrood.jj-prompt-info
     pkgs.hdgarrood.nix-prompt-info
   ];
