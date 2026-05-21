@@ -50,7 +50,11 @@ if status --is-interactive
   # These have to go here rather than in functions/*.fish because they wouldn't
   # get autoloaded there
   function __jj_snapshot_for_prompt --on-event fish_prompt --desc "run a jj snapshot so that prompt info is up-to-date"
-    ~/.nix-profile/bin/jj log -r 'none()' 2>/dev/null
+    # Use a full path to jj so that this still works even if ~/.nix-profile/bin
+    # isn't on the PATH for whatever reason
+    if test -x ~/.nix-profile/bin/jj
+      ~/.nix-profile/bin/jj log -r 'none()' 2>/dev/null
+    end
   end
 
   # Notify me when a command that took longer than 5s finishes
