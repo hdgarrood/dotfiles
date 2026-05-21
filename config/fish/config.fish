@@ -1,6 +1,8 @@
 set --export EDITOR nvim
-# less: use colours
-set --export LESS R
+# less options:
+# - R: use colours
+# - F: don't page if there's less than one screenful of output
+set --export LESS RF
 # this works better with the other colors in my prompt
 set --global fish_color_user brred
 
