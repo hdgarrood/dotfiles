@@ -22,3 +22,6 @@ __pycache__
 
 # npm
 npm-debug.log
+
+# nix
+result*
