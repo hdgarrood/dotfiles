@@ -40,7 +40,7 @@ if status --is-interactive
       source $file
   end
 
-  if command -v nix-your-shell >/dev/null
+  if command --query nix-your-shell
     nix-your-shell fish | source
   end
 
