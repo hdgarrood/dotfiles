@@ -74,5 +74,6 @@ in
     # By default, npingler uses the attr matching your hostname.
     sunbird = profile;
     rook = profile;
+    cuckoo = profile;
   };
 }
