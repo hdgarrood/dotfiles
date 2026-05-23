@@ -15,7 +15,7 @@ config.notification_handling = "SuppressFromFocusedPane"
 
 -- Appearance
 config.color_scheme = 'flexoki-dark'
-config.font_size = 15
-config.font = wezterm.font 'PT Mono'
+config.font_size = 16
+config.font = wezterm.font 'Ubuntu Mono'
 
 return config
