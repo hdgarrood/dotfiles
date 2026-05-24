@@ -32,15 +32,17 @@ if status --is-interactive
   #
   # We need this for the direnv hook and for completions for nix-provided
   # programs in particular.
-  set --global --append fish_complete_path \
-      ~/.nix-profile/share/fish/vendor_completions.d \
-      ~/.nix-profile/share/fish/completions
-  set --global --append fish_function_path \
-      ~/.nix-profile/share/fish/vendor_functions.d \
-      ~/.nix-profile/share/fish/functions
-  # https://github.com/fish-shell/fish-shell/issues/10078#issuecomment-1786490675
-  for file in ~/.nix-profile/share/fish/vendor_conf.d/*.fish
+  for nix_profile in /nix/var/nix/profiles/default ~/.nix-profile
+    set --global --append fish_complete_path \
+        $nix_profile/share/fish/vendor_completions.d \
+        $nix_profile/share/fish/completions
+    set --global --append fish_function_path \
+        $nix_profile/share/fish/vendor_functions.d \
+        $nix_profile/share/fish/functions
+    # https://github.com/fish-shell/fish-shell/issues/10078#issuecomment-1786490675
+    for file in $nix_profile/share/fish/vendor_conf.d/*.fish
       source $file
+    end
   end
 
   if command --query nix-your-shell
