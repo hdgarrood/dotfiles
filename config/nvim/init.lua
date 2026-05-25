@@ -1,6 +1,7 @@
 vim.opt.number=true
 vim.opt.relativenumber=true
 vim.opt.colorcolumn='80'
+vim.opt.list=true
 vim.opt.cursorline=true
 vim.opt.ignorecase=true
 vim.opt.smartcase=true
@@ -72,10 +73,6 @@ vim.keymap.set(
   ':tabnew<cr>',
   { noremap = true }
 )
-
--- Highlight trailing space
-vim.cmd('match TrailingSpace /\\s\\+$/')
-vim.cmd('highlight link TrailingSpace ColorColumn')
 
 -- shortcut for clearing the search pattern
 vim.cmd('command! ClearSearchPattern let @/ = ""')
