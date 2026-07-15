@@ -31,5 +31,15 @@
   enabled = true
   autoUpdate = true
 
+# always push/pull over https; this allows using wifi that blocks port 22
+[credential "https://github.com"]
+  helper =
+  helper = !/Users/harry/.nix-profile/bin/gh auth git-credential
+[url "https://github.com/"]
+  insteadOf = git@github.com:
+[url "https://github.com/"]
+  insteadOf = ssh://git@github.com/
+
 [include]
   path = config.local
+
