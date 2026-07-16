@@ -27,7 +27,18 @@ prek = [
   "--",
   "bash",
   "-c",
-  "jj diff -r \"${1:-ancestors(@) ~ ancestors(trunk())}\" --name-only --no-pager | xargs prek run --files",
+  """
+  if [ -f .pre-commit-config.yaml ] && command -v prek >/dev/null; then
+    jj diff -r \"${1:-ancestors(@) ~ ancestors(trunk())}\" --name-only --no-pager | xargs prek run --files
+  fi
+  """
 ]
-gp = [ "git", "push", "-r", "most_recent_bookmark(@-)" ]
+gp = [
+  "util",
+  "exec",
+  "--",
+  "bash",
+  "-c",
+  "jj prek && jj git push -r 'most_recent_bookmark(@-)'",
+]
 ba = [ "bookmark", "advance" ]
