@@ -45,6 +45,7 @@ let
     pkgs.numbat
     pkgs.ripgrep
     pkgs.ruby
+    pkgs.rust-analyzer
     pkgs.tree-sitter # for nvim
     pkgs.treefmt
     pkgs.watchman
