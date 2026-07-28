@@ -45,6 +45,10 @@ if status --is-interactive
     end
   end
 
+  # bwat/bfix should reuse buck2's completion script
+  complete -c bwat -w buck2
+  complete -c bfix -w buck2
+
   if command --query nix-your-shell
     nix-your-shell fish | source
   end

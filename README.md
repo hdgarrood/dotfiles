@@ -6,8 +6,9 @@ To set up:
 - Run `nix-shell -p ruby npingler` (for bootstrapping)
 - Run `./install.rb` to put all the dotfiles in the right places
 - Run `npingler switch` to install npingler-provided software and pin nixpkgs
-- If on macOS, run `ln -s ~/.nix-profile/Applications/WezTerm.app ~/Applications/WezTerm.app`
-  so that WezTerm shows up in Spotlight
+- Install a nightly version of WezTerm manually from the website. Unfortunately
+  recent versions of macOS don't let unsigned apps (such as nixpkgs-built
+  wezterm) send notifications, otherwise I would have it installed from Nix.
 
 Some nice things we have in here:
 
@@ -38,11 +39,15 @@ Some nice things we have in here:
 
 ## Notes
 
-- For some reason, the "stable" version of WezTerm offered on the download page
-  of the wezterm website is ancient, and in particular it has a bug where
-  notifications don't display properly on macOS, which was fixed months ago.
-  Installing it from nixpkgs avoids this and is also easier, so I do that
-  instead.
+- Wezterm is deliberately not listed in the npingler config, because it's not
+  installed from nixpkgs. Installing from nixpkgs would be my preference, but
+  unfortunately the nixpkgs-built version on macOS is not signed by the
+  developer, which means it's not allowed to send notifications. The fix is to
+  install it from <https://wezterm.org> instead. For some reason, the "stable"
+  version of WezTerm offered on the download page of the wezterm website is
+  ancient, and in particular it has a bug where notifications don't display
+  properly on macOS, which was fixed months ago, so make sure you get the
+  nightly version.
 - The nix shell prompt indicator assumes you're using Lix for the
   `$NIX_SHELL_LEVEL` environment variable. It also assumes that direnv is only
   ever used for nix shells (which, for me, is pretty much true)

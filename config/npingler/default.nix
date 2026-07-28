@@ -49,7 +49,6 @@ let
     pkgs.tree-sitter # for nvim
     pkgs.treefmt
     pkgs.watchman
-    pkgs.wezterm
 
     pkgs.hdgarrood.jj-prompt-info
     pkgs.hdgarrood.nix-prompt-info

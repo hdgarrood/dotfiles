@@ -18,4 +18,9 @@ config.color_scheme = 'flexoki-dark'
 config.font_size = 16
 config.font = wezterm.font 'Ubuntu Mono'
 
+wezterm.on('window-config-reloaded', function(window, pane)
+  window:toast_notification('wezterm', 'configuration reloaded!', nil, 4000)
+end)
+
 return config
+
