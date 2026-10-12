@@ -11,14 +11,14 @@
       "type": "Git",
       "repository": {
         "type": "GitHub",
-        "owner": "9999years",
+        "owner": "hdgarrood",
         "repo": "npingler"
       },
-      "branch": "main",
+      "branch": "hdgarrood/push-rkprzquynoyw",
       "submodules": false,
-      "revision": "ca263e74d6ae69d300b958593801bb76ab6cd154",
-      "url": "https://github.com/9999years/npingler/archive/ca263e74d6ae69d300b958593801bb76ab6cd154.tar.gz",
-      "hash": "sha256-C6LJzaT2cfs2EN5Y2TAJv6vujvrNemD5QPyfnISjUvU="
+      "revision": "8aef2dcdc1e0395bcb9f1ea10207e782cda1a0d9",
+      "url": "https://github.com/hdgarrood/npingler/archive/8aef2dcdc1e0395bcb9f1ea10207e782cda1a0d9.tar.gz",
+      "hash": "sha256-h8IIv2N7n0NB6b2V/Kb0eg5ydYTrfgm0VATaxNF9ZAc="
     }
   },
   "version": 8

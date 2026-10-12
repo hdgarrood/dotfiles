@@ -55,12 +55,12 @@ let
   ];
 
   profile = pkgs.npingler-lib.makeProfile {
-    inherit pins;
-    paths =
-      let
-        manifest = pkgs.hdgarrood.makeManifest { inherit paths; };
-      in
-      paths ++ [ manifest ];
+    inherit pins paths;
+    # paths =
+    #   let
+    #     manifest = pkgs.hdgarrood.makeManifest { inherit paths; };
+    #   in
+    #   paths ++ [ manifest ];
   };
 in
 {
