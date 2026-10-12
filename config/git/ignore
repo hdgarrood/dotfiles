@@ -26,4 +26,8 @@ npm-debug.log
 # nix
 result*
 
+# claude
 **/.claude/settings.local.json
+
+# direnv
+.direnv/
