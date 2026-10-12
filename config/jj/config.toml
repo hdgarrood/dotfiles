@@ -33,12 +33,6 @@ prek = [
   fi
   """
 ]
-gp = [
-  "util",
-  "exec",
-  "--",
-  "bash",
-  "-c",
-  "jj prek && jj git push -r 'most_recent_bookmark(@-)'",
-]
+gpb = [ "git", "push", "-r", "most_recent_bookmark(@-)" ]
+gpp = [ "git", "push", "-c", "@-" ]
 ba = [ "bookmark", "advance" ]

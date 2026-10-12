@@ -25,3 +25,5 @@ npm-debug.log
 
 # nix
 result*
+
+**/.claude/settings.local.json
