@@ -4,8 +4,8 @@
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "artifact": "nixexprs.tar.xz",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1088030.8edc0c72e3a3/nixexprs.tar.xz",
-      "hash": "sha256-6BIvCXtdLW4HQwsOGkgH444aB3vCbHypE9TA78ireh8="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1089329.ca1659429c95/nixexprs.tar.xz",
+      "hash": "sha256-Xdc4viyLXXA3qos9fo2Ezb+JxRasKk99tSasmSAdnSc="
     },
     "npingler": {
       "type": "Git",
@@ -16,9 +16,9 @@
       },
       "branch": "hdgarrood/push-rkprzquynoyw",
       "submodules": false,
-      "revision": "8aef2dcdc1e0395bcb9f1ea10207e782cda1a0d9",
-      "url": "https://github.com/hdgarrood/npingler/archive/8aef2dcdc1e0395bcb9f1ea10207e782cda1a0d9.tar.gz",
-      "hash": "sha256-h8IIv2N7n0NB6b2V/Kb0eg5ydYTrfgm0VATaxNF9ZAc="
+      "revision": "8c6c2243ba28cb3e1ab676096f902c0683e9cde0",
+      "url": "https://github.com/hdgarrood/npingler/archive/8c6c2243ba28cb3e1ab676096f902c0683e9cde0.tar.gz",
+      "hash": "sha256-OUby9Mz4g3aycuVJEcj84Ordl40ixR759/nKwZ7yU1o="
     }
   },
   "version": 8
