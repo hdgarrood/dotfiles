@@ -5,6 +5,13 @@ let
     overlays = [
       (final: prev: {
         npingler-lib = final.callPackage "${sources.npingler}/lib" { };
+        npingler = prev.npingler.overrideAttrs (old: {
+          src = sources.npingler;
+          cargoDeps = final.rustPlatform.fetchCargoVendor {
+            src = sources.npingler;
+            hash = "sha256-N2WyQ/TXoKmFvJP5CIrV87cbKFjwuGa9R6wq374J9wc=";
+          };
+        });
         hdgarrood = final.callPackage ./makePkgs.nix { } // {
           makeManifest = final.callPackage ./makeManifest.nix { };
         };
