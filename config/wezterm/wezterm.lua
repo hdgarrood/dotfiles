@@ -15,8 +15,9 @@ config.notification_handling = "SuppressFromFocusedPane"
 
 -- Appearance
 config.color_scheme = 'flexoki-dark'
-config.font_size = 16
-config.font = wezterm.font 'Ubuntu Mono'
+config.font_size = 15
+-- nix build --no-link --print-out-paths nixpkgs#maple-mono.NL-Variable
+config.font = wezterm.font 'Maple Mono NL'
 config.window_decorations = "INTEGRATED_BUTTONS | RESIZE"
 config.window_frame = {
   font_size = 14
