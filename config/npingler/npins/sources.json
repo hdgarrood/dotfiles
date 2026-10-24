@@ -14,11 +14,11 @@
         "owner": "hdgarrood",
         "repo": "npingler"
       },
-      "branch": "hdgarrood/push-rkprzquynoyw",
+      "branch": "hdgarrood/head",
       "submodules": false,
-      "revision": "7aa8549f9ac7bca71f76ce5c3f7c5c469de9bbb1",
-      "url": "https://github.com/hdgarrood/npingler/archive/7aa8549f9ac7bca71f76ce5c3f7c5c469de9bbb1.tar.gz",
-      "hash": "sha256-qd3fpmfg8OJXlUGo18nO9fMe44AHqQhvWDMrEHk5asw="
+      "revision": "387c8685f5b9525a87df33e2b8e31c15c7b9e225",
+      "url": "https://github.com/hdgarrood/npingler/archive/387c8685f5b9525a87df33e2b8e31c15c7b9e225.tar.gz",
+      "hash": "sha256-C046j/dLQxBcJbxYk++ad7u4WRCj4WiVYgKlh0ybQb8="
     }
   },
   "version": 8
