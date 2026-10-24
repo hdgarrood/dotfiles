@@ -33,10 +33,10 @@ if status --is-interactive
   # We need this for the direnv hook and for completions for nix-provided
   # programs in particular.
   for nix_profile in /nix/var/nix/profiles/default ~/.nix-profile
-    set --global --append fish_complete_path \
+    set --global --prepend fish_complete_path \
         $nix_profile/share/fish/vendor_completions.d \
         $nix_profile/share/fish/completions
-    set --global --append fish_function_path \
+    set --global --prepend fish_function_path \
         $nix_profile/share/fish/vendor_functions.d \
         $nix_profile/share/fish/functions
     # https://github.com/fish-shell/fish-shell/issues/10078#issuecomment-1786490675
