@@ -12,9 +12,7 @@ let
             hash = "sha256-N2WyQ/TXoKmFvJP5CIrV87cbKFjwuGa9R6wq374J9wc=";
           };
         });
-        hdgarrood = final.callPackage ./makePkgs.nix { } // {
-          makeManifest = final.callPackage ./makeManifest.nix { };
-        };
+        hdgarrood = final.callPackage ./makePkgs.nix { };
       })
     ];
   };
@@ -64,11 +62,6 @@ let
 
   profile = pkgs.npingler-lib.makeProfile {
     inherit pins paths;
-    # paths =
-    #   let
-    #     manifest = pkgs.hdgarrood.makeManifest { inherit paths; };
-    #   in
-    #   paths ++ [ manifest ];
   };
 in
 {
