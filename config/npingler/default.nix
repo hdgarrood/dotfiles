@@ -43,10 +43,11 @@ let
     pkgs.graphviz
     pkgs.jq
     pkgs.jujutsu
+    pkgs.maple-mono.NL-Variable
     pkgs.neovim
+    pkgs.nix-direnv
     pkgs.nix-your-shell
     pkgs.nixfmt
-    pkgs.nix-direnv
     pkgs.npingler
     pkgs.npins
     pkgs.numbat
