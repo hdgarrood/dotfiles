@@ -12,7 +12,7 @@ To set up:
 
 Some nice things we have in here:
 
-- [npingler](https://github.com/999years/npingler):
+- [npingler](https://github.com/9999years/npingler):
     - npingler uses nix to make it easy to install almost all of the software I
       use on a daily basis with a single command, keep everything in sync
       between different machines, keep track of versions which were previously
@@ -48,6 +48,8 @@ Some nice things we have in here:
   ancient, and in particular it has a bug where notifications don't display
   properly on macOS, which was fixed months ago, so make sure you get the
   nightly version.
+- On macOS, fonts provided by nixpkgs can be installed by running `open
+  ~/.nix-profile/share/fonts/*`.
 - The nix shell prompt indicator assumes you're using Lix for the
   `$NIX_SHELL_LEVEL` environment variable. It also assumes that direnv is only
   ever used for nix shells (which, for me, is pretty much true)
