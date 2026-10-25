@@ -23,8 +23,7 @@ end
 if status --is-interactive
   fish_vi_key_bindings
 
-  abbr ls eza
-  abbr tree eza --tree
+  abbr tree ls --tree
   abbr gdiff git diff --no-index --
 
   # Nix-provided fish config is added to XDG_DATA_DIRS too late, after fish has
@@ -85,6 +84,14 @@ if status --is-interactive
       end
       set --append title (ms_to_human $CMD_DURATION)
       wezterm_notify "$title" "$PWD: $argv"
+    end
+  end
+
+  function ls --wraps eza
+    if command -q eza
+        eza --long --short-nix --icons=always $argv
+    else
+        command ls -l $argv
     end
   end
 end
